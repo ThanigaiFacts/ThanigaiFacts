@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Blogs{% endblock %}
+{% block content %}
+ <div class = "container-fluid" style="padding:1%;margin:5% auto;">
+    <div class="row"  style="margin:0 15%;">
+       {% for blogpost in jobj[0]["blog"]: %}
+       <div class="col-xl-3 col-lg-4 col-md-6">
+           <div class="card card-style" style="padding:2%;">
+             <img class="card-img-top cardImage" src="{{ url_for('static',filename = 'images/workImg.png') }}" alt="Card image">
+             <div class="card-body">
+                  <h4 class="card-title cardTitleStyle">{{ blogpost["title"] }}</h4>
+                  <p class="card-text cardBodyStyle">{{ blogpost["body"] }}</p>
+                  <a href="{{ url_for('showDetailBlog', num = loop.index) }}"  class="btn btn-primary">Read More</a>
+             </div>
+           </div>
+         </div>
+      {% endfor %}
+      </div>
+</div>
+{% endblock %}

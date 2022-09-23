@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block header %}
+ <!-- Navigation bar -->
+    <section id="nav-section">
+     <nav class="navbar bg-success navbar-dark navbar-expand-md">
+        <div class="container-fluid navigation-container">
+        <a href="{{ url_for('contact') }}" class="navbar-brand brand-style">Thanigai</a>
+        <button type="button" name="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+           <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item item-style"><a href="{{ url_for('IndexFun') }}" class="nav-link active link-style">Home</a></li>
+          <li class="nav-item item-style"><a href="{{ url_for('NumberGuessing_fun' , value = '0') }}" class="nav-link link-style">Game</a></li>
+          <li class="nav-item item-style"><a href="{{ url_for('blogIndexFun') }}" class="nav-link link-style">Blog</a></li>
+        </ul>
+        </div>
+      </div>
+     </nav>
+   </section>
+{% endblock %}
+
+{% block content %}
+
+  <!-- logo -->
+   <section id="logo-section" class="Logo-Section">
+     <div class="container">
+       <img src="{{ url_for('static',filename = 'images/ThanigaiFacts.png') }}" alt="Thanigai Facts" class="img-fluid rounded-circle mx-auto d-block img-logo">
+     </div>
+   </section>
+
+  <!-- Education -->
+   <section id="education-section" class="bg-success section">
+     <div class="container style-container">
+       <!-- <div id="EducationDiv" class="divSectionStyle" style = 'background-color:#FDEEDC'> -->
+          <h3 class="SubHeading">EDUCATION</h3>
+            <div class="row div-float-section" style="padding:5%;">
+               <div class="col-md-4">
+                  <img class = "img-fluid rounded-circle float-start d-block section-img" src="{{ url_for('static',filename = 'images/studyImg.png') }}" alt="studies">
+               </div>
+               <div class="col-md-8">
+                  <p class = "sectionText">I Completed My B.E(Computer Science) in the year 2017 - 2021  in Panimalar Institute of Technology and my HSC in 2016 - 2017 in Rmk Mat Hr Sec School and My SSLC in 2014 - 2015 in Jaya Mat Hr Sec School.</p>
+               </div>
+            </div>
+          <table ID="EduTable" class="table table-bordered text-light table-style">
+            <tr class="tableRow">
+              <td>2017-2021</td>
+              <td>B.E</td>
+              <td>PANIMALAR INSTITUE OF TECHNOLOGY</td>
+            </tr>
+
+            <tr class="tableRow">
+              <td>2016-2017</td>
+              <td>HSC</td>
+              <td>RMK MAT HR SEC SCHOOL</td>
+            </tr>
+
+            <tr class="tableRow">
+              <td>2014-2015</td>
+              <td>SSLC</td>
+              <td>JAYA MAT HR SEC SCHOOL</td>
+            </tr>
+          </table>
+        </div>
+   </section>
+
+  <!-- Experience -->
+
+   <section id="experience-section" style='color:blue;margin-top:3%;' class="section">
+     <div class="container style-container" >
+       <!-- <div id="EducationDiv" class="divSectionStyle" style = 'background-color:#FDEEDC'> -->
+       <h3 class="SubHeading">EXPERIENCE</h3>
+       <div class="row div-float-section" style="padding:5%;">
+          <div class="col-md-8">
+             <p class = "sectionText">Currently I am working as a Software Engineer in Kcp Limited. I joined this company on 2021 </p>
+          </div>
+          <div class="col-md-4">
+              <img class = "img-fluid rounded-corner float-start d-block section-img" src="{{ url_for('static',filename = 'images/workImg.png') }}" alt="studies">
+          </div>
+       </div>
+       <table ID="ExperienceTable"  class="table table-bordered text-primary table-style" style="text-align:center">
+         <tr class="tableRow">
+           <td>2021-2023</td>
+           <td>SOFTWARE ENGINEER</td>
+           <td>KCP LIMITED</td>
+         </tr>
+       </table>
+     </div>
+   </section>
+
+  <!-- Contact -->
+
+   <section id="contact-section" style='margin-top:3%;padding:1%;' class="bg-success">
+     <div class="container style-container" style="padding:2%;">
+       <!-- <div id="EducationDiv" class="divSectionStyle" style = 'background-color:#FDEEDC'> -->
+     <h3 class="SubHeading">CONTACT</h3>
+         <p class="sectionText" style="text-align:center;margin:2% auto;">Mail to <a href = "{{ url_for('contact') }}" class="contact-link"><em>thanigaifacts@gmail.com</em></a></p>
+    <footer style="text-align:center">
+        <a href ="#" class="footer-link"><span class="fa-brands fa-youtube footer-icons"></span><span class="footer-text">Youtube</span></a>
+        <a href ="#" class="footer-link"><span class="fa-brands fa-instagram footer-icons"></span><span class="footer-text">Instagram</span></a>
+        <a href ="#" class="footer-link"><span class="fa-brands fa-twitter footer-icons" ></span><span class="footer-text">Twitter</span></a>
+    </footer>
+    </div>
+   </section>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+<!--
+{% block title %} Admin Dashboard {% endblock %}
+ {% block backbtn %}
+  <a href="{{ url_for('admin_logout') }}" class = "homeBtn">Logout</a>
+ {% endblock %}-->
+
+{% block header %}
+ <!-- Navigation bar -->
+    <section id="nav-section">
+     <nav class="navbar bg-success navbar-dark navbar-expand-md">
+        <div class="container-fluid navigation-container">
+        <a href="#" class="navbar-brand brand-style">Admin</a>
+        <button type="button" name="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+           <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item item-style">
+           <div class="dropdown">
+              <button type="button" class="btn btn-outline-success text-light dropdown-toggle link-style" data-bs-toggle="dropdown">
+                  Share Market
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item link-style" href="{{ url_for('AvgCalculator') }}">Avg Calculator</a></li>
+                <li><a class="dropdown-item link-style" href="{{ url_for('ShareMarket') }}">Upload Share Data</a></li>
+                </ul>
+           </div>
+          </li>
+         <li>
+           <a href="{{ url_for('admin_logout') }}" class = "homeBtn">Logout</a>
+         </li>
+
+        </ul>
+        </div>
+      </div>
+     </nav>
+   </section>
+{% endblock %}
+

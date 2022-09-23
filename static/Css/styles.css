@@ -1,0 +1,190 @@
+body{
+  font-family: cambria math;
+  color:#fff;
+  background-color:#fff;
+}
+.navigation-container{
+  padding: 10px;
+  margin: 0 3%;
+}
+.brand-style{
+  font-size: 2rem;
+}
+.item-style{
+  padding-right:15px;
+}
+.link-style{
+  font-size: 1.5rem;
+}
+.Logo-Section{
+  margin: 7%;
+  padding: 10%;
+}
+.section{
+  /* border:1px solid green; */
+  padding: 3%;
+}
+.img-logo{
+  width:300px;
+  height:300px;
+  border: 1px solid powderblue;
+  padding: 30px;
+}
+.section-img{
+  /* width:200px;
+  height:150px; */
+  height:90%;
+  width:80%;
+  position: relative;
+  left: 8%;
+
+}
+.style-container{
+  padding:4% 3%;
+  margin:2% auto;
+}
+.sectionText{
+  font-size: 1.5rem;
+  line-height: 1.7;
+  text-align: justify;
+}
+.SubHeading{
+  font-size:2.5rem;
+  text-align: center;
+  margin:1% auto;
+}
+.div-float-section{
+  margin: 0 15%;
+}
+.table-style{
+  width:50%;
+  margin: auto;
+  font-weight: bold;
+  font-size:1.2rem;
+}
+
+.footer-icons{
+  padding:1%;
+  color:#fff;
+  font-size: 2rem;
+}
+.footer-text{
+  font-size: 1.5rem;
+  margin-right: 3%;
+
+}
+.contact-link , .footer-link{
+  text-decoration:none;
+  color:#fff
+}
+.contact-link:hover , .footer-link:hover{
+  color:powderblue;
+}
+
+/*Guessing Number page style */
+.homeBtn{
+  border:2px solid #fff;
+  border-radius: 20px;
+  font-size:1.5rem;
+  color:#fff;
+  padding:10px;
+  text-decoration:none;
+  font-family:cambria math
+}
+.homeBtn:hover{
+  background-color:#fff;
+  color:red;
+}
+.text{
+  margin:3% auto;
+  text-align: center;
+  color:red;
+  font-size:2rem;
+
+}
+.img-style{
+  display: block;
+  margin:5% auto;
+}
+/* Blog Index style */
+
+.cardImage{
+   width:50%;
+   margin : auto;
+}
+
+.card-style{
+ width:90%;
+ margin:7% 1%;
+}
+
+.cardTitleStyle{
+   color:red;
+   font-size:2rem;
+   margin:3% 0;
+}
+
+.cardBodyStyle{
+   color:blue;
+   font-size:1.7rem;
+   text-indent:15px;
+   padding:3%;
+   text-align:justify;
+  }
+
+  /* Avg Calculator */
+
+  .ShareMarket-table label,.ShareMarket-table td{
+    color:blue;
+    font-family : cambria math;
+    font-size:1.5rem;
+    text-align:left;
+  }
+
+
+  input[type = "password"],input[type = "text"]{
+    color:blue;
+    font-family : cambria math;
+    font-size:1.5rem;
+    width:70%;
+    border:1px solid blue;
+    border-radius : 5px;
+}
+
+input[type = "submit"]{
+  width:100%;
+  margin:2% auto;
+  letter-spacing:3px;
+}
+.clearbtn{
+   width:40%;
+   margin-left:2%;
+   letter-spacing:2px;
+}
+
+.ShareMarket-table {
+    border-collapse: separate;
+    border-spacing: 0 2em;
+}
+
+.output-Text{
+  font-size : 1.5rem;
+  word-spacing:5px;
+}
+
+/* login */
+
+.login-icon{
+  color:blue;
+  font-size:2rem;
+
+}
+.login-table {
+    border-collapse: separate;
+    border-spacing: 0 2em;
+}
+
+/* contact form */
+
+
+

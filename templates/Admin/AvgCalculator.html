@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Share Market Info{% endblock %}
+{% block backbtn %}
+  <a href="{{ url_for('admin_home') }}" class = "homeBtn">Back</a>
+{% endblock %}
+{% block content %}
+  <div class = "container" style="margin:10% auto;">
+   <div class="row"  style="margin:0">
+     <div class="col">
+          <form action="{{ url_for('AvgCalculator') }}" method="post" style="margin:3% auto;padding:3%;">
+
+    <table style="margin:auto;padding:3%;" class="ShareMarket-table">
+         <h4 style="color:red;text-align:center;font-size:2rem;">Average Calculator</h4>
+      <tr>
+        <td>
+          <label>
+            First Buy Qty
+          </label>
+        </td>
+        <td>
+          : <input type="text" name="FirstBuyQty" value = {{ FBQty }}>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>
+              First Buy Price
+          </label>
+        </td>
+        <td>
+          : <input type="text" name="FirstBuyPrice" value = {{ FBPirce }}>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>
+              Second Buy Qty
+          </label>
+        </td>
+        <td>
+          : <input type="text" name="SecondBuyQty" value = {{ SBQty }}>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>
+                Second Buy Price
+          </label>
+        </td>
+        <td>
+          : <input type="text" name="SecondBuyPrice" value = {{ SBPrice }}>
+        </td>
+      </tr>
+      <tr>
+        <!--<td colspan="2" ><input type="submit" class="btn btn-lg btn-success" name="SubmitBtn" value="Calculate"></td>-->
+        <td><input type="submit" class="btn btn-lg btn-success" name="SubmitBtn" value="Calculate"></td>
+         <td><button class="btn btn-lg btn-outline-success clearbtn" name="ClearBtn">Clear</button></td>
+      </tr>
+      <tr>
+          <td colspan="2"><p class="output-Text" style="color:red;">{{ outText }}</p></td>
+      </tr>
+    </table>
+  </form>
+  </div>
+</div>
+  </div>
+{% endblock %}

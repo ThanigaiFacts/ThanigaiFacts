@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Welcome to Number Guessing Game {% endblock %}
+{% block content %}
+
+     {% if guessedVal  >  number %}
+         <p class = "text" style="color:red;">You Guessed Higher</p>
+         <img src ="https://media.giphy.com/media/W0Pts08xV5JJp2Nj4N/giphy.gif" class="img-style">
+     {% elif guessedVal  <  number  %}
+         <p class = "text" style="color:orange;">You Guessed Lower</p>
+         <img src ="https://media.giphy.com/media/DVSpPORBAgDwiXCjzf/giphy.gif"  class="img-style">
+     {% else %}
+         <p class = "text" style="color:green;">You Guessed Correctly!!</p>
+         <img src ="https://media.giphy.com/media/hz6L3FwCc3hI2zUAFI/giphy.gif"  class="img-style">
+     {% endif %}
+   </div>
+
+{% endblock %}
