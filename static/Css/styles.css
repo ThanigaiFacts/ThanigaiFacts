@@ -86,7 +86,13 @@ footer{
 }
 
 /*Guessing Number page style */
+.backbtn-div{
+  padding-top:1%;
+  text-align:center
+}
+
 .homeBtn{
+
   border:2px solid #fff;
   border-radius: 20px;
   font-size:1.5rem;
@@ -194,7 +200,7 @@ input[type = "submit"]{
 
 /* Media Query */
 
-@media only screen and (max-width:700px){
+@media only screen and (max-width:770px){
  footer{
    padding:1%;
    text-align:left;
@@ -202,7 +208,7 @@ input[type = "submit"]{
  }
  .footer-container{
     position:relative;
-    left:5%;
+    left:3%;
     width:50%;
     margin:auto;
  }
@@ -221,6 +227,22 @@ input[type = "submit"]{
   width:100%;
 }
 
+.SubHeading{
+  font-size:1.8rem;
+  margin:3% auto;
+}
 
+/* Guessing Number */
+.backbtn-div{
+   padding-top:2%;
+}
+.text{
+   margin:10% auto;
+}
+.img-style{
+  display: block;
+  margin:15% auto;
+  width:80%;
+}
 
 }
