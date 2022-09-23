@@ -41,8 +41,8 @@
                <div class="col-md-8">
                   <p class = "sectionText">I Completed My B.E(Computer Science) in the year 2017 - 2021  in Panimalar Institute of Technology and my HSC in 2016 - 2017 in Rmk Mat Hr Sec School and My SSLC in 2014 - 2015 in Jaya Mat Hr Sec School.</p>
                </div>
-            </div>
-          <table ID="EduTable" class="table table-bordered text-light table-style">
+               <div class="col-sm-12">
+                   <table ID="EduTable" class="table table-bordered text-light table-style" style="text-align:center;">
             <tr class="tableRow">
               <td>2017-2021</td>
               <td>B.E</td>
@@ -61,6 +61,9 @@
               <td>JAYA MAT HR SEC SCHOOL</td>
             </tr>
           </table>
+                </div>
+            </div>
+
         </div>
    </section>
 
@@ -77,14 +80,16 @@
           <div class="col-md-4">
               <img class = "img-fluid rounded-corner float-start d-block section-img" src="{{ url_for('static',filename = 'images/workImg.png') }}" alt="studies">
           </div>
+           <div class="col-sm-12">
+                <table ID="ExperienceTable"  class="table table-bordered text-primary table-style" style="text-align:center">
+                  <tr class="tableRow">
+                      <td>2021-2023</td>
+                      <td>SOFTWARE ENGINEER</td>
+                      <td>KCP LIMITED</td>
+                  </tr>
+                </table>
+           </div>
        </div>
-       <table ID="ExperienceTable"  class="table table-bordered text-primary table-style" style="text-align:center">
-         <tr class="tableRow">
-           <td>2021-2023</td>
-           <td>SOFTWARE ENGINEER</td>
-           <td>KCP LIMITED</td>
-         </tr>
-       </table>
      </div>
    </section>
 
@@ -95,10 +100,18 @@
        <!-- <div id="EducationDiv" class="divSectionStyle" style = 'background-color:#FDEEDC'> -->
      <h3 class="SubHeading">CONTACT</h3>
          <p class="sectionText" style="text-align:center;margin:2% auto;">Mail to <a href = "{{ url_for('contact') }}" class="contact-link"><em>thanigaifacts@gmail.com</em></a></p>
-    <footer style="text-align:center">
-        <a href ="#" class="footer-link"><span class="fa-brands fa-youtube footer-icons"></span><span class="footer-text">Youtube</span></a>
-        <a href ="#" class="footer-link"><span class="fa-brands fa-instagram footer-icons"></span><span class="footer-text">Instagram</span></a>
-        <a href ="#" class="footer-link"><span class="fa-brands fa-twitter footer-icons" ></span><span class="footer-text">Twitter</span></a>
+    <footer>
+        <div class="row footer-container">
+            <div class="col-md-4">
+                <a href ="#" class="footer-link"><span class="fa-brands fa-youtube footer-icons"></span><span class="footer-text">Youtube</span></a>
+            </div>
+            <div class="col-md-4">
+                <a href ="#" class="footer-link"><span class="fa-brands fa-instagram footer-icons"></span><span class="footer-text">Instagram</span></a>
+            </div>
+            <div class="col-md-4">
+                 <a href ="#" class="footer-link"><span class="fa-brands fa-twitter footer-icons" ></span><span class="footer-text">Twitter</span></a>
+            </div>
+        </div>
     </footer>
     </div>
    </section>

@@ -58,15 +58,19 @@ body{
 }
 .table-style{
   width:50%;
-  margin: auto;
+  margin: 5% auto;
   font-weight: bold;
   font-size:1.2rem;
 }
-
+footer{
+  text-align:center;
+  margin:3% auto 0 auto;
+}
 .footer-icons{
   padding:1%;
   color:#fff;
   font-size: 2rem;
+  margin-right:5%;
 }
 .footer-text{
   font-size: 1.5rem;
@@ -188,3 +192,35 @@ input[type = "submit"]{
 
 
 
+/* Media Query */
+
+@media only screen and (max-width:700px){
+ footer{
+   padding:1%;
+   text-align:left;
+
+ }
+ .footer-container{
+    position:relative;
+    left:5%;
+    width:50%;
+    margin:auto;
+ }
+
+ footer .footer-link{
+     margin:3 auto;
+
+ }
+
+.div-float-section{
+  margin: 0 4%;
+}
+
+.table-style{
+  margin-top:3%;
+  width:100%;
+}
+
+
+
+}
