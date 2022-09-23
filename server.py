@@ -8,17 +8,19 @@ app = Flask(__name__)
 admin = Admin(app)
 num = 0
 res = None
+
 # Route Starts #
 # User Part
 @app.route("/")
 def user():
     return redirect(url_for('IndexFun'))
 
+
 @app.route("/home")
 def IndexFun():
     global num
     num = utility.randomNumberGenerator()
-    return render_template("User/index1.html")
+    return render_template("User/index.html")
 
 
 @app.route("/contact" ,methods=['POST', 'GET'])
