@@ -133,9 +133,14 @@
           <input type="text" name="userMessage">
           <!--<textarea name="userMessage" rows="10" cols="80" ></textarea>-->
          <input type="submit" name="contactSubmitBtn" value="Submit">
+         <p id="demo"></p>
          <p class="output-text">{{ msg }}</p>
        </form>
     </div>
+<script>
+let width = screen.width;
+document.getElementById("demo").innerHTML =  width + "px";
+</script>
 
 </body>
 </html>
