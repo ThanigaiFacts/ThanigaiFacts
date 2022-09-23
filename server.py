@@ -18,7 +18,7 @@ def user():
 def IndexFun():
     global num
     num = utility.randomNumberGenerator()
-    return render_template("User/index.html")
+    return render_template("User/index1.html")
 
 
 @app.route("/contact" ,methods=['POST', 'GET'])
