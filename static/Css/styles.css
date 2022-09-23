@@ -55,6 +55,7 @@ body{
 }
 .div-float-section{
   margin: 0 15%;
+  padding:5%;
 }
 .table-style{
   width:50%;
@@ -116,7 +117,12 @@ footer{
   display: block;
   margin:5% auto;
 }
+
 /* Blog Index style */
+
+.blogindex-div{
+  margin:0 15%;
+}
 
 .cardImage{
    width:50%;
@@ -243,6 +249,24 @@ input[type = "submit"]{
   display: block;
   margin:15% auto;
   width:80%;
+}
+
+/* Blog index page */
+
+.blogindex-div{
+  margin:0 7%;
+}
+
+/* Blog Page */
+
+.div-float-section{
+  margin: 5% 7%;
+  padding:2%;
+}
+
+.style-container{
+  padding:1%;
+  margin:5% auto;
 }
 
 }
