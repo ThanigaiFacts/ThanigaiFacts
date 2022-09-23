@@ -15,6 +15,10 @@ res = None
 def user():
     return redirect(url_for('IndexFun'))
 
+@app.route("/test")
+def testing():
+    return render_template("User/index1.html")
+
 
 @app.route("/home")
 def IndexFun():
