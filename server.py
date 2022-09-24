@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect
 from functools import wraps
+from dotenv import load_dotenv
 from admin import Admin
 import ShareMarket as shares
 import utility
@@ -7,6 +8,7 @@ import utility
 app = Flask(__name__)
 admin = Admin(app)
 num = 0
+load_dotenv()
 res = None
 
 # Route Starts #

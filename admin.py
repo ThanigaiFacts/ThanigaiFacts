@@ -1,13 +1,12 @@
+import os
 
 class Admin:
     def __init__(self,app):
-        self.USER = "admin"
-        self.PASSW = "Thanigai17Solutions"
         self.flaskObj = app
         self.isLogin = False
 
     def login(self ,user ,passw):
-        if user.lower() == self.USER and passw == self.PASSW:
+        if user.lower() == os.getenv("ADMIN_USER")and passw == os.getenv("ADMIN_PASSWORD"):
             self.isLogin = True
         return self.isLogin
 
