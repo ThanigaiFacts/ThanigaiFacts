@@ -14,17 +14,7 @@
       <tr>
         <td>
           <label>
-            First Buy Qty
-          </label>
-        </td>
-        <td>
-          : <input type="text" name="FirstBuyQty" value = {{ FBQty }}>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>
-              First Buy Price
+              Avg Price
           </label>
         </td>
         <td>
@@ -34,17 +24,17 @@
       <tr>
         <td>
           <label>
-              Second Buy Qty
+            Existing Qty
           </label>
         </td>
         <td>
-          : <input type="text" name="SecondBuyQty" value = {{ SBQty }}>
+          : <input type="text" name="FirstBuyQty" value = {{ FBQty }}>
         </td>
       </tr>
       <tr>
         <td>
           <label>
-                Second Buy Price
+                New Buy Price
           </label>
         </td>
         <td>
@@ -52,9 +42,19 @@
         </td>
       </tr>
       <tr>
+        <td>
+          <label>
+              New Buy Qty
+          </label>
+        </td>
+        <td>
+          : <input type="text" name="SecondBuyQty" value = {{ SBQty }}>
+        </td>
+      </tr>
+
+      <tr>
         <!--<td colspan="2" ><input type="submit" class="btn btn-lg btn-success" name="SubmitBtn" value="Calculate"></td>-->
         <td><input type="submit" class="btn btn-lg btn-success" name="SubmitBtn" value="Calculate"></td>
-         <td><button class="btn btn-lg btn-outline-success clearbtn" name="ClearBtn">Clear</button></td>
       </tr>
       <tr>
           <td colspan="2"><p class="output-Text" style="color:red;">{{ outText }}</p></td>

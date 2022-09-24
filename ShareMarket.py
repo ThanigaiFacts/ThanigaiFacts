@@ -214,7 +214,6 @@ root.mainloop()
 ##### AVG #####
 
 def CalculateAveragePrice(FirstBuyQty,FirstBuyPrice,SecondBuyQty,SecondBuyPrice):
-
     if len(FirstBuyPrice) > 0 and len(SecondBuyPrice) > 0 and len(FirstBuyQty) > 0 and len(SecondBuyQty) > 0:
         totAmt = (float(FirstBuyPrice) * float(FirstBuyQty)) + (
                     float(SecondBuyPrice) * float(SecondBuyQty))

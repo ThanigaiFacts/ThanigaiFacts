@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 from functools import wraps
 from admin import Admin
-import ShareMarket
+import ShareMarket as shares
 import utility
 
 app = Flask(__name__)
@@ -58,7 +58,7 @@ def showDetailBlog(num):
 
 # Admin Part #
 
-@app.route("/admin")
+@app.route("/admin/")
 def admin_page():
     return redirect(url_for('admin_home'))
 
@@ -101,7 +101,7 @@ def AvgCalculator():
             FBP = request.form['FirstBuyPrice']
             SBQ = request.form['SecondBuyQty']
             SBP = request.form['SecondBuyPrice']
-            isFieldsEmpty, Text = ShareMarket.CalculateAveragePrice(FBQ, FBP, SBQ, SBP)
+            isFieldsEmpty, Text = shares.CalculateAveragePrice(FBQ, FBP, SBQ, SBP)
             if isFieldsEmpty:
                 return "Enter All Fields"
             else:
@@ -130,9 +130,6 @@ def ShareMarket():
 
        else:
             return render_template("Admin/ShareMarket.html")
-
-
-
 
 
 @app.errorhandler(404)
