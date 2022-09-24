@@ -2,7 +2,7 @@
 class Admin:
     def __init__(self,app):
         self.USER = "admin"
-        self.PASSW = "admin"
+        self.PASSW = "Thanigai17Solutions"
         self.flaskObj = app
         self.isLogin = False
 

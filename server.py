@@ -120,7 +120,7 @@ def ShareMarket():
            FBP = request.form['BuyPrice']
 
            '''
-           isFieldsEmpty, Text = ShareMarket.ShareMarketData(FBQ, FBP,CompName)
+           isFieldsEmpty, Text = shares.ShareMarketData(FBQ, FBP,CompName)
            if isFieldsEmpty:
                return "Enter All Fields"
            else:
