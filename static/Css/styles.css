@@ -49,12 +49,19 @@ body{
   text-align: justify;
 }
 .SubHeading{
-  position:relative;
-  left:10%;
   font-size:2.5rem;
   margin:1% auto;
+  text-align:center;
 
 }
+.page-title{
+  font-size:2.5rem;
+  margin:1% auto;
+  text-align:center;
+  position:relative;
+  left:10%;
+}
+
 .div-float-section{
   margin: 0 15%;
   padding:5%;
@@ -95,7 +102,6 @@ footer{
 }
 
 .homeBtn{
-
   border:2px solid #fff;
   border-radius: 20px;
   font-size:1.5rem;
@@ -104,6 +110,7 @@ footer{
   text-decoration:none;
   font-family:cambria math
 }
+
 .homeBtn:hover{
   background-color:#fff;
   color:red;
@@ -249,23 +256,23 @@ input[type = "submit"]{
   width:100%;
 }
 
-.SubHeading{
-  font-size:1.5rem;
-  margin:3% auto;
-  position:static;
-  display:inline-block;
-
-}
 
 .homeBtn{
   border:1px solid #fff;
   font-size:1.2rem;
 }
+.page-title{
+   width:50%;
+   margin: 2% auto;
+   position:static;
+   text-align:right;
+
+}
 
 
 /* Guessing Number */
 .backbtn-div{
-   padding-top:2%;
+   padding-top:3%;
 }
 
 .text{
