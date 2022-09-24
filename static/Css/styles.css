@@ -16,6 +16,7 @@ body{
 .link-style{
   font-size: 1.5rem;
 }
+
 .Logo-Section{
   margin: 7%;
   padding: 10%;
@@ -226,7 +227,23 @@ input[type = "submit"]{
 }
 
 
+/* Admin page */
+.dd-menu-style{
+ background-color:#F2F2F2;
+}
+
+.dd-link-style{
+  font-size:1.4rem;
+  color:green;
+}
+.dd-link-style:hover{
+  color:red;
+}
+
+
 /* contact form */
+
+
 
 
 

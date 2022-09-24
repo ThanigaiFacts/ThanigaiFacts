@@ -21,16 +21,15 @@
               <button type="button" class="btn btn-outline-success text-light dropdown-toggle link-style" data-bs-toggle="dropdown">
                   Share Market
               </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item link-style" href="{{ url_for('AvgCalculator') }}">Avg Calculator</a></li>
-                <li><a class="dropdown-item link-style" href="{{ url_for('ShareMarket') }}">Upload Share Data</a></li>
+              <ul class="dropdown-menu dd-menu-style">
+                <li><a class="dropdown-item dd-link-style" href="{{ url_for('AvgCalculator') }}">Avg Calculator</a></li>
+                <li><a class="dropdown-item dd-link-style" href="{{ url_for('ShareMarket') }}">Upload Share Data</a></li>
                 </ul>
            </div>
           </li>
          <li>
            <a href="{{ url_for('admin_logout') }}" class = "homeBtn">Logout</a>
          </li>
-
         </ul>
         </div>
       </div>
