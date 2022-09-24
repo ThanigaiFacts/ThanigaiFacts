@@ -254,13 +254,19 @@ input[type = "submit"]{
   font-size:1.3rem;
   margin:3% auto;
   position:static;
-  border:1px solid red;
 }
+
+.homeBtn{
+  border:1px solid #fff;
+  font-size:1.2rem;
+}
+
 
 /* Guessing Number */
 .backbtn-div{
    padding-top:2%;
 }
+
 .text{
    margin:10% auto;
 }
