@@ -251,9 +251,10 @@ input[type = "submit"]{
 }
 
 .SubHeading{
-  font-size:1.8rem;
+  font-size:1.3rem;
   margin:3% auto;
   position:static;
+  border:1px solid red;
 }
 
 /* Guessing Number */
