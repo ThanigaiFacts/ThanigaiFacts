@@ -262,11 +262,7 @@ input[type = "submit"]{
   font-size:1.2rem;
 }
 .page-title{
-   width:50%;
    margin: 2% auto;
-   position:static;
-   text-align:right;
-
 }
 
 
