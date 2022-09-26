@@ -1,12 +1,13 @@
 import requests
 import random
 import smtplib
+import os
 from email.message import EmailMessage
 
 def getBlogData():
     # https://mocki.io/fake-json-api --> json website
-    end_point = "https://mocki.io/v1/f4aff8ed-6d04-43e1-ac4f-ce373a4a64e0"
-    return requests.get(end_point).json()
+    #end_point = "https://mocki.io/v1/f4aff8ed-6d04-43e1-ac4f-ce373a4a64e0"
+    return requests.get(os.getenv("BLOG_END_POINT")).json()
 
 def randomNumberGenerator():
     return random.randint(1, 10)
