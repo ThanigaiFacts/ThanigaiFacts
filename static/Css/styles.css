@@ -193,6 +193,7 @@ footer{
     width:70%;
     border:1px solid blue;
     border-radius : 5px;
+    outline:none;
 }
 
 input[type = "submit"]{
@@ -209,12 +210,23 @@ input[type = "submit"]{
 .ShareMarket-table {
     border-collapse: separate;
     border-spacing: 0 2em;
+    margin:auto;
+    padding:3%;
 }
 
 .output-Text{
   font-size : 1.5rem;
   word-spacing:5px;
 }
+/* Share Market Data  */
+.companylist-style{
+padding:1.3%;
+width:70%;
+border:1px solid blue;
+color:red;
+outline:none;
+}
+
 
 /* login */
 
@@ -394,7 +406,7 @@ input[type = "submit"]{
   background-color:#fff;
   color:red;
 }
-
+/* share market data */
 
 
 

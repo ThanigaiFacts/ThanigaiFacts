@@ -222,7 +222,7 @@ def CalculateAveragePrice(FirstBuyQty,FirstBuyPrice,SecondBuyQty,SecondBuyPrice)
         return False, f'You have total {totQty} Qty with Avg price of  ₹{AvgPrice}'
 
     else:
-        return True , None
+        return True , f'Enter all the Fields'
 
 
 #####  SM  ######
@@ -329,14 +329,18 @@ def postData():
         return 'Oops Something Went Wrong, Try again!'
 
 
-
 def ShareMarketData(BuyQty,BuyPrice,CompanyName):
     global Bqty,Bprice,CompName
     Bqty = BuyQty
     Bprice = BuyPrice
     CompName = CompanyName
-
+    '''
     if len(BuyQty) > 0 and len(BuyPrice) > 0 and len(CompanyName) > 0:
         return False,  postData()
     else:
-        return True , None
+        return True , f"Enter all the Fields"
+    '''
+    if len(BuyQty) > 0 and len(BuyPrice) > 0 and len(CompanyName) > 0:
+        return False, "ok"
+    else:
+        return True, f"Enter all the Fields"

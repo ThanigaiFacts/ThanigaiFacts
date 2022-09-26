@@ -4,12 +4,13 @@
   <a href="{{ url_for('admin_home') }}" class = "homeBtn">Back</a>
 {% endblock %}
 {% block content %}
+
   <div class = "container" style="margin:10% auto;">
    <div class="row"  style="margin:0">
      <div class="col">
-          <form action="{{ url_for('ShareMarket') }}" method="post" style="margin:3% auto;padding:3%;">
+      <form action="{{ url_for('ShareMarket') }}" method="post" style="margin:3% auto;padding:3%;">
 
-    <table style="margin:auto;padding:3%;" class="ShareMarket-table">
+    <table class="ShareMarket-table">
          <h4 style="color:red;text-align:center;font-size:2rem;">Share Market Details</h4>
       <tr>
         <td >
@@ -18,7 +19,7 @@
           </label>
         </td>
          <td>
-          :  <select id="CompanyList" name="CompanyNames" style="padding:1.3%;width:70%;border:1px solid blue;color:red;">
+          :  <select id="CompanyList" name="CompanyNames" class="companylist-style">
               <option value="INFOSYS">INFOSYS</option>
               <option value="WIPRO">WIPRO</option>
              <option value="HCL">HCL</option>
@@ -70,4 +71,9 @@
   </div>
 </div>
   </div>
+ {% if Fempty != None %}
+  <script>
+     alert("{{ outText }}")
+  </script>
+ {% endif %}
 {% endblock %}

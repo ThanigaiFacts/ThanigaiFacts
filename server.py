@@ -101,12 +101,12 @@ def AvgCalculator():
             SBP = request.form['SecondBuyPrice']
             isFieldsEmpty, Text = shares.CalculateAveragePrice(FBQ, FBP, SBQ, SBP)
             if isFieldsEmpty:
-                return "Enter All Fields"
+                return render_template("Admin/AvgCalculator.html", Fempty = isFieldsEmpty,outText=Text)
             else:
-                return render_template("Admin/AvgCalculator.html", outText=Text, FBQty=FBQ, FBPirce=FBP, SBQty=SBQ,
+                return render_template("Admin/AvgCalculator.html", Fempty = isFieldsEmpty, outText=Text, FBQty=FBQ, FBPirce=FBP, SBQty=SBQ,
                                        SBPrice=SBP)
         else:
-            return render_template("Admin/AvgCalculator.html")
+            return render_template("Admin/AvgCalculator.html",Fempty = None)
 
 
 @app.route("/admin/sm", methods=['POST', 'GET'])
@@ -117,17 +117,16 @@ def ShareMarket():
            FBQ = request.form['BuyQty']
            FBP = request.form['BuyPrice']
 
-           '''
+
            isFieldsEmpty, Text = shares.ShareMarketData(FBQ, FBP,CompName)
            if isFieldsEmpty:
-               return "Enter All Fields"
+               return render_template("Admin/ShareMarket.html", Fempty = isFieldsEmpty, outText=Text)
            else:
-               return render_template("ShareMarket.html", outText=Text)
-           '''
-           return "hello"
+               return render_template("Admin/ShareMarket.html", Fempty = isFieldsEmpty,  outText=Text)
+
 
        else:
-            return render_template("Admin/ShareMarket.html")
+            return render_template("Admin/ShareMarket.html",Fempty = None)
 
 
 @app.errorhandler(404)
