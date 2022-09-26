@@ -17,10 +17,6 @@ res = None
 def user():
     return redirect(url_for('IndexFun'))
 
-@app.route("/test")
-def testing():
-    return render_template("User/index1.html")
-
 
 @app.route("/home")
 def IndexFun():
@@ -56,10 +52,6 @@ def blogIndexFun():
 @app.route("/Detail_Blog/<int:num>")
 def showDetailBlog(num):
     return render_template("User/blog.html", jobj=res, blogNum=num - 1)
-
-@app.route("/login_one")
-def testlogin():
-    return render_template("Admin/login_one.html", jobj=res, blogNum=num - 1)
 
 
 # Admin Part #
