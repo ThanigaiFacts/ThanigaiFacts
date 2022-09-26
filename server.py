@@ -57,6 +57,10 @@ def blogIndexFun():
 def showDetailBlog(num):
     return render_template("User/blog.html", jobj=res, blogNum=num - 1)
 
+@app.route("/login_one")
+def testlogin():
+    return render_template("Admin/login_one.html", jobj=res, blogNum=num - 1)
+
 
 # Admin Part #
 
