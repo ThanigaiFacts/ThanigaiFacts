@@ -246,6 +246,10 @@ input[type = "submit"]{
 
 
 /* Admin page */
+.admin-login-row
+{
+  margin:7% 17%;
+}
 .dd-menu-style{
  background-color:#F2F2F2;
 }
@@ -285,9 +289,6 @@ input[type = "submit"]{
 
  }
 
-.div-float-section{
-  margin: 0 4%;
-}
 
 .table-style{
   margin-top:3%;
@@ -355,6 +356,9 @@ input[type = "submit"]{
 /* Admin */
 
 /* Login page */
+.admin-login-row{
+  margin:10% auto;
+}
 
 .admin-login-form-style{
  margin:3% auto;

@@ -2,7 +2,7 @@
 {% block title %} Admin {% endblock %}
 {% block content %}
 <div class = "container-fluid" >
-   <div class="row"  style="margin:7% 17%; ">
+   <div class="row admin-login-row">
      <div class="col-sm-12">
           <form action="{{ url_for('admin_login_page') }}" method="post" class="admin-login-form-style">
               <!--<h4 style="color:red;text-align:center;font-size:2rem;width:50%;margin:auto;">LOGIN</h4>-->
@@ -12,20 +12,20 @@
                       <img src="{{ url_for('static',filename = 'images/ThanigaiFacts.png') }}" alt="thanigai facts" style="margin:auto;">
                   </td>
               </tr>
-               <tr style="width:50%;">
-                  <td style="width:10%;">
+               <tr style="width:100%;">
+                  <td style="width:30%;">
                      <span class="fa-solid fa-user-ninja login-icon" ></span>
                   </td>
-                  <td style="width:40%;text-align:left">
+                  <td style="width:70%;text-align:left">
                    <input type="text" name="userName" >
                   </td>
                </tr>
 
-               <tr style="width:50%;">
-                  <td style="width:10%;">
+               <tr style="width:100%;">
+                  <td style="width:30%;">
                      <span class="fa-solid fa-lock login-icon" ></span>
                   </td>
-                  <td style="width:40%;text-align:left">
+                  <td style="width:70%;text-align:left">
                   <input type="password" name="password">
                   </td>
                </tr>
