@@ -20,8 +20,8 @@
         </td>
          <td>
           :  <select id="actionListID" name="ActionList" class="companylist-style" onchange="actionChanged()">
-              <option value="Sell">Sell</option>
-              <option value="Buy">Buy</option>
+             <option value="Buy">Buy</option>
+             <option value="Sell">Sell</option>
              </select>
         </td>
       </tr>
@@ -33,7 +33,7 @@
           </label>
         </td>
          <td>
-          :  <select id="CompanyList" name="CompanyNames" class="companylist-style">
+          :  <select id="CompanyList" name="CompanyNames" class="companylist-style" onchange="companyListChanged">
               {% for company in Companies: %}
                  <option value="{{ company }}">{{ company }}</option>
               {% endfor %}
@@ -47,7 +47,7 @@
           </label>
         </td>
         <td>
-          : <input type="text" name="CompanyName" value = {{ CompName }}>
+          : <input type="text" id ="CompName" name="CompanyName" value = {{ CompName }}>
         </td>
       </tr>
       <tr>
@@ -96,21 +96,24 @@
         {
           alert("You Selected Buy")
           var x = document.getElementById("CompanyList")
+          var y = document.getElementById("CompName")
           var option = document.createElement("option")
           option.text = "Other"
           option.value = "Other"
           x.add(option,x[0])
           x.selectedIndex = "0";
+          y.value = "";
         }
         else{
         var x = document.getElementById("CompanyList")
+        var y = document.getElementById("CompName")
         if (x.options[0].value == "Other")
         {
          x.remove(0)
+         y.value = x.options[0].text
         }
         alert("You Selected Sell")
         }
-
-    }
+}
 </script>
 {% endblock %}
