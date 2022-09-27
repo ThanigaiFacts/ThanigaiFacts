@@ -1,3 +1,5 @@
+import os
+
 import requests
 from datetime import datetime
 #from tkinter import *
@@ -227,50 +229,35 @@ def CalculateAveragePrice(FirstBuyQty,FirstBuyPrice,SecondBuyQty,SecondBuyPrice)
 
 #####  SM  ######
 
-'''
-def loadComapanyNames():
+
+def getCompanyList():
     compNameList = []
-    headerData = {
-        "Authorization": "Basic dGhhbmlnYWk6c29sdXRpb25zQDEyMw",
-        "Content-Type": "application/json"
+    param = {
+        "action": "getData"
     }
-    holdings_endpoint = "https://api.sheety.co/9185ea913e3a1db7afa05d850171b7af/shareMarket/holdings"
+    holdings_endpoint = os.getenv("SHEET_ENDPOINT")
 
-    res = requests.get(holdings_endpoint, headers=headerData).json()
-    for company in res['holdings']:
-        print(company['companyName'])
-        compNameList.append(company['companyName'])
-
-    ScompName['values'] = ['Other'] + [company['companyName'] for company in res['holdings']]
-    ScompName.current(0)
-
-'''
-
-def  getCompanyList():
-    return ["INFOSYS","WIPRO","ITC","EXIDE"]
+    res = requests.get(holdings_endpoint, params=param).json()
+    for comp in res:
+        compNameList.append(comp["CompanyName"])
+    return compNameList
 
 
-def getShareData():
-    sheet_endpoint = "https://api.sheety.co/9185ea913e3a1db7afa05d850171b7af/shareMarket/holdings"
-
-    headerData = {
-        "Authorization": "Basic dGhhbmlnYWk6c29sdXRpb25zQDEyMw",
-        "Content-Type": "application/json"
+def getShareData(CompName):
+    sheet_endpoint = os.getenv("SHEET_ENDPOINT")
+    param = {
+        "action": "getData"
     }
-    res = requests.get(sheet_endpoint, headers=headerData).json()
-    for data in res['holdings']:
-        if data['companyName'] == CompName.upper():
-            return (data['quantity'], data['amtInvested'], data['avgPrice'], data['id'], True)
+    res = requests.get(sheet_endpoint, params=param).json()
+    for comp in res:
+        if comp["CompanyName"] == CompName.upper():
+            return (comp["Quantity"], comp["AmtInvested"], comp["AvgPrice"], 0, True)
 
     return (0, 0, 0, 0, False)
 
 
-def updateShareData(avgprice, quantity, amtInvested, rowID, companyPresent):
-    headerData = {
-        "Authorization": "Basic dGhhbmlnYWk6c29sdXRpb25zQDEyMw",
-        "Content-Type": "application/json"
-    }
-
+def updateShareData(avgprice, quantity, amtInvested, rowID, companyPresent,Company):
+    '''
     if companyPresent:
         holdings_endpoint = f"https://api.sheety.co/9185ea913e3a1db7afa05d850171b7af/shareMarket/holdings/{rowID}"
         holding = {
@@ -280,35 +267,42 @@ def updateShareData(avgprice, quantity, amtInvested, rowID, companyPresent):
                 "amtInvested": amtInvested
             }
         }
-        requests.put(holdings_endpoint, json=holding, headers=headerData)
+        requests.put(holdings_endpoint, json=holding)
 
     else:
-        holdings_endpoint = "https://api.sheety.co/9185ea913e3a1db7afa05d850171b7af/shareMarket/holdings"
-        holding = {
-            "holding": {
-                "companyName": CompName.upper(),
-                "avgPrice": avgprice,
-                "quantity": quantity,
-                "amtInvested": amtInvested
-            }
+    '''
+    if not companyPresent:
+        holdings_endpoint = os.getenv("SHEET_ENDPOINT")
+
+        param ={
+          "action" : "writeHolding"
         }
-        requests.post(holdings_endpoint, json=holding, headers=headerData)
+
+        holding = {
+                "CompanyName": Company.upper(),
+                "AvgPrice": avgprice,
+                "Quantity": quantity,
+                "AmtInvested": amtInvested
+        }
+        return requests.post(holdings_endpoint, params=param,json=holding).text
 
 
-def postData():
-    heldQty, totAmt, avpprice, rowID, isCompanyPresent = getShareData()
+
+def postData(Bqty,Bprice,CompanyName):
+
+    heldQty, totAmt, avpprice, rowID, isCompanyPresent = getShareData(CompanyName)
 
     totQty = float(heldQty) + float(Bqty)
     amtInvested = round(float(Bprice), 2) * float(Bqty)
     totAmtInvested = float(amtInvested) + float(totAmt)
     newAvgPrice = round(totAmtInvested / totQty, 2)
 
-    shareData_endpoint = f"https://script.google.com/macros/s/AKfycbzHI11Kw3rGSUSHKMlK1nJVw1yD_Lc6I73o56w6_A/exec"
+    shareData_endpoint = os.getenv("SHEET_ENDPOINT")
 
     shareDatum = {
 
         "Date": datetime.now().strftime("%d/%m/%Y"),
-        "CompanyName": CompName.upper(),
+        "CompanyName": CompanyName.upper(),
         "PrevAvgPrice": avpprice,
         "HeldQuantity": heldQty,
         "BuyPrice": round(float(Bprice), 2),
@@ -324,26 +318,20 @@ def postData():
     }
 
     res = requests.post(shareData_endpoint, params=param, json=shareDatum)
-    print(res.text)
-    if res.status_code == 200:
-        # updateShareData(newAvgPrice, totQty, totAmtInvested, rowID, isCompanyPresent)
-        return 'Data Saved Successfully!'
+    if res.text == "Success":
+        updateShareData(newAvgPrice, totQty, totAmtInvested, rowID, isCompanyPresent, CompanyName)
+
+        if updateShareData(newAvgPrice, totQty, totAmtInvested, rowID, isCompanyPresent,CompanyName) == "Success":
+            return "Data Saved Successfully!"
+        return  "Share Data Saved! Holding Data Not Saved!!"
+
     else:
         return 'Oops Something Went Wrong, Try again!'
 
-
 def ShareMarketData(BuyQty,BuyPrice,CompanyName):
-    global Bqty,Bprice,CompName
-    Bqty = BuyQty
-    Bprice = BuyPrice
-    CompName = CompanyName
-    '''
+
     if len(BuyQty) > 0 and len(BuyPrice) > 0 and len(CompanyName) > 0:
-        return False,  postData()
+        return False,  postData(BuyQty,BuyPrice,CompanyName)
     else:
         return True , f"Enter all the Fields"
-    '''
-    if len(BuyQty) > 0 and len(BuyPrice) > 0 and len(CompanyName) > 0:
-        return False, "ok"
-    else:
-        return True, f"Enter all the Fields"
+
