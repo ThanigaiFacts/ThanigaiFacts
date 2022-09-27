@@ -19,9 +19,9 @@
           </label>
         </td>
          <td>
-          :  <select name="ActionList" class="companylist-style">
-              <option value="Buy">Buy</option>
+          :  <select id="actionListID" name="ActionList" class="companylist-style" onchange="actionChanged()">
               <option value="Sell">Sell</option>
+              <option value="Buy">Buy</option>
              </select>
         </td>
       </tr>
@@ -84,9 +84,33 @@
   </div>
 </div>
   </div>
+<script>
  {% if Fempty != None %}
-  <script>
      alert("{{ outText }}")
-  </script>
  {% endif %}
+
+ function actionChanged(){
+        var selectElement = event.target;
+        var value = selectElement.value;
+        if (value == "Buy")
+        {
+          alert("You Selected Buy")
+          var x = document.getElementById("CompanyList")
+          var option = document.createElement("option")
+          option.text = "Other"
+          option.value = "Other"
+          x.add(option,x[0])
+          x.selectedIndex = "0";
+        }
+        else{
+        var x = document.getElementById("CompanyList")
+        if (x.options[0].value == "Other")
+        {
+         x.remove(0)
+        }
+        alert("You Selected Sell")
+        }
+
+    }
+</script>
 {% endblock %}
