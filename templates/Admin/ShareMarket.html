@@ -12,6 +12,20 @@
 
     <table class="ShareMarket-table">
          <h4 style="color:red;text-align:center;font-size:2rem;">Share Market Details</h4>
+        <tr>
+        <td >
+          <label>
+            Select Action
+          </label>
+        </td>
+         <td>
+          :  <select name="ActionList" class="companylist-style">
+              <option value="Buy">Buy</option>
+              <option value="Sell">Sell</option>
+             </select>
+        </td>
+      </tr>
+
       <tr>
         <td >
           <label>
@@ -20,10 +34,9 @@
         </td>
          <td>
           :  <select id="CompanyList" name="CompanyNames" class="companylist-style">
-              <option value="INFOSYS">INFOSYS</option>
-              <option value="WIPRO">WIPRO</option>
-             <option value="HCL">HCL</option>
-             <option value="TCS">TCS</option>
+              {% for company in Companies: %}
+                 <option value="{{ company }}">{{ company }}</option>
+              {% endfor %}
              </select>
         </td>
       </tr>

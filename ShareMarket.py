@@ -246,6 +246,10 @@ def loadComapanyNames():
 
 '''
 
+def  getCompanyList():
+    return ["INFOSYS","WIPRO","ITC","EXIDE"]
+
+
 def getShareData():
     sheet_endpoint = "https://api.sheety.co/9185ea913e3a1db7afa05d850171b7af/shareMarket/holdings"
 
@@ -299,31 +303,30 @@ def postData():
     totAmtInvested = float(amtInvested) + float(totAmt)
     newAvgPrice = round(totAmtInvested / totQty, 2)
 
-    shareData_endpoint = "https://api.sheety.co/9185ea913e3a1db7afa05d850171b7af/shareMarket/shareData"
-
-    headerData = {
-        "Authorization": "Basic dGhhbmlnYWk6c29sdXRpb25zQDEyMw",
-        "Content-Type": "application/json"
-    }
+    shareData_endpoint = f"https://script.google.com/macros/s/AKfycbzHI11Kw3rGSUSHKMlK1nJVw1yD_Lc6I73o56w6_A/exec"
 
     shareDatum = {
-        "shareDatum": {
-            "date": datetime.now().strftime("%d/%m/%Y"),
-            "companyName": CompName.upper(),
-            "prevAvgPrice": avpprice,
-            "heldQuantity": heldQty,
-            "buyPrice": round(float(Bprice), 2),
-            "buyQuantity": int(Bqty),
-            "amtInvested": amtInvested,
-            "newAvgPrice": newAvgPrice,
-            "totalQuantity": totQty,
-            "totalAmtInvested": totAmtInvested
-        }
+
+        "Date": datetime.now().strftime("%d/%m/%Y"),
+        "CompanyName": CompName.upper(),
+        "PrevAvgPrice": avpprice,
+        "HeldQuantity": heldQty,
+        "BuyPrice": round(float(Bprice), 2),
+        "BuyQuantity": int(Bqty),
+        "AmtInvested": amtInvested,
+        "NewAvgPrice": newAvgPrice,
+        "TotalQuantity": totQty,
+        "TotalAmtInvested": totAmtInvested
+
+    }
+    param = {
+        "action": "writeData"
     }
 
-    res = requests.post(shareData_endpoint, json=shareDatum, headers=headerData)
+    res = requests.post(shareData_endpoint, params=param, json=shareDatum)
+    print(res.text)
     if res.status_code == 200:
-        updateShareData(newAvgPrice, totQty, totAmtInvested, rowID, isCompanyPresent)
+        # updateShareData(newAvgPrice, totQty, totAmtInvested, rowID, isCompanyPresent)
         return 'Data Saved Successfully!'
     else:
         return 'Oops Something Went Wrong, Try again!'
