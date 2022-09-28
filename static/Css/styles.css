@@ -101,6 +101,48 @@ footer{
   color:powderblue;
 }
 
+/* Contact Page */
+
+.contact-title{
+  color:red;
+  text-align:left;
+  font-size:2.5rem;
+  margin-top:-10%;
+}
+
+.contact-body{
+  border:1px solid grey;
+  border-radius:20px;
+  padding:5%;
+  margin-top:7%;
+  width:50%;
+}
+
+.contact-body label{
+  color:red;
+  letter-spacing:2px;
+  font-family : arial;
+  font-size:1.5rem;
+  padding:3% 0 2% 0;
+}
+
+.contact-body input, .contact-body textarea{
+    color:blue;
+    font-family : cambria math;
+    font-size:1.5rem;
+    width:100%;
+    border:1px solid dodgerblue;
+    border-radius : 5px;
+    outline:none;
+    padding:2% 0;
+    margin-bottom: 3%;
+}
+
+.contact-body input[type="submit"]{
+   margin-top:7%;
+   color:#fff;
+}
+
 /*Guessing Number page style */
 .backbtn-div{
   padding-top:1%;

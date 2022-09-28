@@ -27,6 +27,10 @@ def send_mail(name,mail,mobile,msg):
         smtp.login(os.getenv("MAIL_USER_NAME"), os.getenv("MAIL_PASSWORD"))
         smtp.send_message(mailMsg)
 
+    return "Message Sent"
+
+
+
 
 
 
