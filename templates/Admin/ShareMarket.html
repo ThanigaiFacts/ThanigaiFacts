@@ -33,7 +33,7 @@
           </label>
         </td>
          <td>
-          :  <select id="CompanyList" name="CompanyNames" class="companylist-style" onchange="companyListChanged">
+          :  <select id="CompanyList" name="CompanyNames" class="companylist-style" onchange="companyListChanged()">
               {% for company in Companies: %}
                  <option value="{{ company }}">{{ company }}</option>
               {% endfor %}
@@ -90,14 +90,13 @@
  {% endif %}
 
  function actionChanged(){
-        var selectElement = event.target;
-        var value = selectElement.value;
-        z = document.getElementById("actionListID")
+        //var selectElement = event.target;
+        //var value = selectElement.value;
+        var x = document.getElementById("CompanyList")
+        var y = document.getElementById("CompName")
+        var z = document.getElementById("actionListID")
         if (z.value == "Buy")
-        {
-          alert("You Selected Buy")
-          var x = document.getElementById("CompanyList")
-          var y = document.getElementById("CompName")
+         {
           var option = document.createElement("option")
           option.text = "Other"
           option.value = "Other"
@@ -106,19 +105,27 @@
           y.value = "";
         }
         else{
-        var x = document.getElementById("CompanyList")
-        var y = document.getElementById("CompName")
         if (x.options[0].value == "Other")
         {
-         x.remove(0)
-         y.value = x.options[0].text
+         x.remove(0);
         }
-        alert("You Selected Sell")
+        companyListChanged();
         }
 
 }
-</script>
-<script onload = actionChanged()>
+function companyListChanged(){
+  var x = document.getElementById("CompanyList")
+  var y = document.getElementById("CompName")
+  if(x[x.selectedIndex].value == "Other")
+  {
+   y.value = "";
+  }
+  else{
+     y.value = x[x.selectedIndex].value;
+  }
 
+}
+actionChanged();
 </script>
+
 {% endblock %}
