@@ -249,28 +249,43 @@ def getShareData(CompName):
         "action": "getData"
     }
     res = requests.get(sheet_endpoint, params=param).json()
-    print(res)
     for comp in res:
         if comp["CompanyName"] == CompName.upper():
             return (comp["Quantity"], comp["AmtInvested"], comp["AvgPrice"], comp["rowID"], True)
     return (0, 0, 0, 0, False)
 
 
-def updateShareData(avgprice, quantity, amtInvested, rowID, companyPresent,Company):
+def updateShareData(avgprice, quantity, amtInvested, rowID, companyPresent,Company,fullySold):
     if companyPresent:
-        holdings_endpoint = os.getenv("SHEET_ENDPOINT")
-        param = {
-            "action": "updateHolding"
-        }
+        if not fullySold:
+            holdings_endpoint = os.getenv("SHEET_ENDPOINT")
+            param = {
+                "action": "updateHolding"
+            }
 
-        holding = {
-            "AvgPrice": avgprice,
-            "Quantity": quantity,
-            "AmtInvested": amtInvested,
-            "rowID" : rowID + 2
-         }
+            holding = {
+                "AvgPrice": avgprice,
+                "Quantity": quantity,
+                "AmtInvested": amtInvested,
+                "rowID": rowID + 2
+            }
 
-        return requests.post(holdings_endpoint,params=param, json=holding).text
+            return requests.post(holdings_endpoint, params=param, json=holding).text
+        else:
+
+            holdings_endpoint = os.getenv("SHEET_ENDPOINT")
+            param = {
+                "action": "deleteHolding"
+            }
+
+            holding = {
+                "rowID": rowID + 2
+            }
+            return requests.post(holdings_endpoint, params=param, json=holding).text
+
+
+
+
 
     else:
         holdings_endpoint = os.getenv("SHEET_ENDPOINT")
@@ -292,11 +307,22 @@ def updateShareData(avgprice, quantity, amtInvested, rowID, companyPresent,Compa
 def postData(Bqty,Bprice,CompanyName,ordertype):
 
     heldQty, totAmt, avpprice, rowID, isCompanyPresent = getShareData(CompanyName)
+    fullySold = False
 
-    totQty = float(heldQty) + float(Bqty)
-    amtInvested = round(float(Bprice), 2) * float(Bqty)
-    totAmtInvested = float(amtInvested) + float(totAmt)
-    newAvgPrice = round(totAmtInvested / totQty, 2)
+    if ordertype == "Buy":
+        totQty = float(heldQty) + float(Bqty)
+        amtInvested = round(float(Bprice), 2) * float(Bqty)
+        totAmtInvested = float(amtInvested) + float(totAmt)
+        newAvgPrice = round(totAmtInvested / totQty, 2)
+    else:
+        totQty = float(heldQty) - float(Bqty)
+        amtInvested = (round(float(Bprice), 2) * float(Bqty)) * -1
+        totAmtInvested = float(totAmt) + float(amtInvested)
+        newAvgPrice = avpprice
+        Bqty = str(int(Bqty) * -1)
+        if totQty == 0:
+            fullySold = True
+            newAvgPrice = 0
 
     shareData_endpoint = os.getenv("SHEET_ENDPOINT")
 
@@ -319,7 +345,7 @@ def postData(Bqty,Bprice,CompanyName,ordertype):
 
     res = requests.post(shareData_endpoint, params=param, json=shareDatum)
     if res.text == "Success":
-        if updateShareData(newAvgPrice, totQty, totAmtInvested, rowID, isCompanyPresent,CompanyName) == "Success":
+        if updateShareData(newAvgPrice, totQty, totAmtInvested, rowID, isCompanyPresent,CompanyName,fullySold) == "Success":
            return "Data Saved Successfully!"
         return  "Share Data Saved! Holding Data Not Saved!!"
 

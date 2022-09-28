@@ -114,11 +114,11 @@ def AvgCalculator():
 def ShareMarket():
        company =  shares.getCompanyList()
        if request.method == 'POST':
-           actionPerform = request.form['ActionList']
+           orderType = request.form['ActionList']
            CompName = request.form['CompanyName']
            FBQ = request.form['BuyQty']
            FBP = request.form['BuyPrice']
-           isFieldsEmpty, Text = shares.ShareMarketData(FBQ, FBP,CompName,actionPerform)
+           isFieldsEmpty, Text = shares.ShareMarketData(FBQ, FBP,CompName,orderType)
            return render_template("Admin/ShareMarket.html", Fempty = isFieldsEmpty, outText=Text,Companies = company)
 
 
