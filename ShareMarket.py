@@ -249,29 +249,30 @@ def getShareData(CompName):
         "action": "getData"
     }
     res = requests.get(sheet_endpoint, params=param).json()
+    print(res)
     for comp in res:
         if comp["CompanyName"] == CompName.upper():
-            return (comp["Quantity"], comp["AmtInvested"], comp["AvgPrice"], 0, True)
-
+            return (comp["Quantity"], comp["AmtInvested"], comp["AvgPrice"], comp["rowID"], True)
     return (0, 0, 0, 0, False)
 
 
 def updateShareData(avgprice, quantity, amtInvested, rowID, companyPresent,Company):
-    '''
     if companyPresent:
-        holdings_endpoint = f"https://api.sheety.co/9185ea913e3a1db7afa05d850171b7af/shareMarket/holdings/{rowID}"
-        holding = {
-            "holding": {
-                "avgPrice": avgprice,
-                "quantity": quantity,
-                "amtInvested": amtInvested
-            }
+        holdings_endpoint = os.getenv("SHEET_ENDPOINT")
+        param = {
+            "action": "updateHolding"
         }
-        requests.put(holdings_endpoint, json=holding)
+
+        holding = {
+            "AvgPrice": avgprice,
+            "Quantity": quantity,
+            "AmtInvested": amtInvested,
+            "rowID" : rowID + 2
+         }
+
+        return requests.post(holdings_endpoint,params=param, json=holding).text
 
     else:
-    '''
-    if not companyPresent:
         holdings_endpoint = os.getenv("SHEET_ENDPOINT")
 
         param ={
@@ -288,7 +289,7 @@ def updateShareData(avgprice, quantity, amtInvested, rowID, companyPresent,Compa
 
 
 
-def postData(Bqty,Bprice,CompanyName):
+def postData(Bqty,Bprice,CompanyName,ordertype):
 
     heldQty, totAmt, avpprice, rowID, isCompanyPresent = getShareData(CompanyName)
 
@@ -300,8 +301,8 @@ def postData(Bqty,Bprice,CompanyName):
     shareData_endpoint = os.getenv("SHEET_ENDPOINT")
 
     shareDatum = {
-
         "Date": datetime.now().strftime("%d/%m/%Y"),
+        "OrderType": ordertype,
         "CompanyName": CompanyName.upper(),
         "PrevAvgPrice": avpprice,
         "HeldQuantity": heldQty,
@@ -311,7 +312,6 @@ def postData(Bqty,Bprice,CompanyName):
         "NewAvgPrice": newAvgPrice,
         "TotalQuantity": totQty,
         "TotalAmtInvested": totAmtInvested
-
     }
     param = {
         "action": "writeData"
@@ -319,19 +319,17 @@ def postData(Bqty,Bprice,CompanyName):
 
     res = requests.post(shareData_endpoint, params=param, json=shareDatum)
     if res.text == "Success":
-        updateShareData(newAvgPrice, totQty, totAmtInvested, rowID, isCompanyPresent, CompanyName)
-
         if updateShareData(newAvgPrice, totQty, totAmtInvested, rowID, isCompanyPresent,CompanyName) == "Success":
-            return "Data Saved Successfully!"
+           return "Data Saved Successfully!"
         return  "Share Data Saved! Holding Data Not Saved!!"
 
     else:
         return 'Oops Something Went Wrong, Try again!'
 
-def ShareMarketData(BuyQty,BuyPrice,CompanyName):
+def ShareMarketData(BuyQty,BuyPrice,CompanyName,ordertype):
 
     if len(BuyQty) > 0 and len(BuyPrice) > 0 and len(CompanyName) > 0:
-        return False,  postData(BuyQty,BuyPrice,CompanyName)
+        return False,  postData(BuyQty,BuyPrice,CompanyName,ordertype)
     else:
         return True , f"Enter all the Fields"
 

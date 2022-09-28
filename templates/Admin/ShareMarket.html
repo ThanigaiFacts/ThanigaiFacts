@@ -92,7 +92,8 @@
  function actionChanged(){
         var selectElement = event.target;
         var value = selectElement.value;
-        if (value == "Buy")
+        z = document.getElementById("actionListID")
+        if (z.value == "Buy")
         {
           alert("You Selected Buy")
           var x = document.getElementById("CompanyList")
@@ -114,6 +115,10 @@
         }
         alert("You Selected Sell")
         }
+
 }
+</script>
+<script onload = actionChanged()>
+
 </script>
 {% endblock %}

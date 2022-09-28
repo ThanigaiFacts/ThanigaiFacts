@@ -118,7 +118,7 @@ def ShareMarket():
            CompName = request.form['CompanyName']
            FBQ = request.form['BuyQty']
            FBP = request.form['BuyPrice']
-           isFieldsEmpty, Text = shares.ShareMarketData(FBQ, FBP,CompName)
+           isFieldsEmpty, Text = shares.ShareMarketData(FBQ, FBP,CompName,actionPerform)
            return render_template("Admin/ShareMarket.html", Fempty = isFieldsEmpty, outText=Text,Companies = company)
 
 
