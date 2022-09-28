@@ -188,6 +188,21 @@ footer{
   margin:5% auto;
 }
 
+.guess-row-style{
+ margin:auto;
+ padding:2%
+
+}
+.guess-label{
+  color:red;
+  font-size:2rem;
+}
+.guessBtn{
+  margin-top:3%;
+  font-size:1.5rem;
+
+}
+
 /* Blog Index style */
 
 .blogindex-div{

@@ -59,10 +59,27 @@
 .text{
    margin:10% auto;
 }
+
 .img-style{
   display: block;
   margin:15% auto;
   width:80%;
+}
+
+.guess-row-style{
+ margin:auto;
+ padding:2%;
+}
+.guess-label{
+  color:red;
+  font-size:1.4rem;
+}
+.guess-input{
+
+}
+.guessBtn{
+  margin-top:5%;
+  font-size:1.3rem;
 }
 
 /* Blog index page */
