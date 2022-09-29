@@ -232,7 +232,68 @@ footer{
    text-align:justify;
   }
 
-  /* Avg Calculator */
+/* News Page */
+
+.news-row-style{
+  color:red;
+  padding:2%;
+  text-align:center;
+  margin: 5% auto;
+  border:1px solid grey;
+  border-radius:30px;
+}
+
+.news-title{
+  font-size:2.5rem;
+  font-family:cambria;
+  font-weight:bold;
+}
+
+.news-dt{
+ margin: 2% auto;
+ font-size:2.3rem;
+ font-weight:600;
+}
+
+.news-img{
+  display: block;
+  margin:3% auto;
+  width:50%;
+}
+
+.news-data{
+  color:brown;
+  font-size:1.7rem;
+  font-weight:500;
+  line-height:1.7;
+  margin:3% auto;
+  width:70%;
+}
+.btn-readmore-row{
+  margin: 1% auto;
+}
+
+.btn-news-readmore-row{
+  text-align:center;
+}
+.btn-news-control-row{
+  text-align:center;
+  margin:2% auto;
+}
+
+.news-btn{
+  margin-bottom:2%;
+  width:30%;
+  padding:1%;
+  font-size:1.8rem;
+  letter-spacing:5px;
+}
+
+
+
+/* Admin section */
+
+/* Avg Calculator */
 
   .ShareMarket-table label,.ShareMarket-table td{
     color:blue;
@@ -274,6 +335,8 @@ input[type = "submit"]{
   font-size : 1.5rem;
   word-spacing:5px;
 }
+
+
 /* Share Market Data  */
 .companylist-style{
 padding:1.3%;
