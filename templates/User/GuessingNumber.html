@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Game {% endblock %}
 {% block content %}
-
-     {% if guessedVal  >  number %}
+     {% if guessedVal >  number %}
          <p class = "text" style="color:red;">You Guessed Higher</p>
          <img src ="https://media.giphy.com/media/W0Pts08xV5JJp2Nj4N/giphy.gif" class="img-style">
      {% elif guessedVal  <  number  %}
@@ -13,21 +12,38 @@
          <img src ="https://media.giphy.com/media/hz6L3FwCc3hI2zUAFI/giphy.gif"  class="img-style">
      {% endif %}
 
-     <div class="container">
-         <div class="row guess-row-style" style="">
+     <div class="container" id = "guess-input-div">
+         <div class="row guess-row-style">
+             <form action="{{ url_for('NumberGuessing_fun') }}" method="post">
              <div class="col-sm-12">
                  <p class="guess-label">Guess Number Between (1 - 10)</p>
              </div>
              <div class="col-sm-12">
-                 <input type="text" class="guess-input">
+                 <input type="number" class="guess-input" id="userGuess" name = "userGuessValue">
              </div>
              <div class="col-sm-12">
-                 <button class="btn  btn-success guessBtn">Guess</button>
+                 <input type = "submit" class="btn  btn-success guessBtn" value = "Guess">
              </div>
+             </form>
          </div>
-
      </div>
 
+<!--
+<script>
+    function guessfun(){
+      var guess = document.getElementById("userGuess").value
+      var url = "{{ url_for('NumberGuessing_fun',value = guess) }}";
+      window.location(url);
+    }
 
-
+</script>
+-->
+<script>
+  if({{ guessedVal }} == {{ number }}){
+      document.getElementById("guess-input-div").style.visibility = "hidden";
+  }
+  else{
+     document.getElementById("guess-input-div").style.visibility = "visible";
+  }
+</script>
 {% endblock %}

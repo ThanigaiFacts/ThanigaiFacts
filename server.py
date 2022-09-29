@@ -7,7 +7,8 @@ import utility
 
 app = Flask(__name__)
 admin = Admin(app)
-num = 0
+num = 5
+val = 0
 load_dotenv()
 res = None
 
@@ -37,9 +38,16 @@ def contact():
     return render_template("User/contact.html")
 
 
-@app.route("/NumberGuessing/<int:value>")
-def NumberGuessing_fun(value):
-    return render_template("User/GuessingNumber.html", number=num, guessedVal=value)
+@app.route("/NumberGuessing"  ,methods=['POST', 'GET'])
+def NumberGuessing_fun():
+    if request.method == 'POST':
+        value = int(request.form["userGuessValue"])
+        return render_template("User/GuessingNumber.html", number=num, guessedVal= value)
+
+    print(num)
+    print(val)
+
+    return render_template("User/GuessingNumber.html",number=num,guessedVal = val)
 
 
 @app.route("/Blog")
