@@ -14,7 +14,7 @@
         </label>
          <br>
 
-         <input type="text" name="userName">
+         <input type="text" name="userName" id = "username">
          <br>
          <label>
             Mail ID
@@ -26,7 +26,7 @@
                 Mobile No.
           </label>
          <br>
-          <input type="number" name="userMobile">
+          <input type="number" name="userMobile"  onKeyPress="if(this.value.length == 10) return false;">
           <br>
           <label>
               Message
@@ -41,6 +41,13 @@
    </div>
   </form>
   </div>
+<script>
+document.getElementById("username").focus();
+{% if msgSent == True %}
+   alert("{{ msg }}")
+{% endif %}
+</script>
+
 {% endblock %}
 
 

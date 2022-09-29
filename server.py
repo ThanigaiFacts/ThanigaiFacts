@@ -33,9 +33,9 @@ def contact():
         Mail = request.form['userMail']
         Mobile = request.form['userMobile']
         Message = request.form['userMessage']
-        msgStatus = utility.send_mail(Name,Mail,Mobile,Message)
-        return render_template("User/contact.html",msg = msgStatus)
-    return render_template("User/contact.html")
+        MsgSent,msgStatus = utility.send_mail(Name,Mail,Mobile,Message)
+        return render_template("User/contact.html",msg = msgStatus,msgSent = MsgSent )
+    return render_template("User/contact.html",msgSent = False )
 
 
 @app.route("/NumberGuessing"  ,methods=['POST', 'GET'])
@@ -43,10 +43,6 @@ def NumberGuessing_fun():
     if request.method == 'POST':
         value = int(request.form["userGuessValue"])
         return render_template("User/GuessingNumber.html", number=num, guessedVal= value)
-
-    print(num)
-    print(val)
-
     return render_template("User/GuessingNumber.html",number=num,guessedVal = val)
 
 
