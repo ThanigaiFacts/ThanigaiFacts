@@ -331,8 +331,18 @@ outline:none;
 }
 
 
-/* contact form */
+/* Error Page */
 
+.content{
+   padding:3%;
+   margin:15% auto;
+   text-align:center;
+}
 
+.error-label{
+ color:red;
+ font-family:cambria math;
+ font-size : 3rem;
+}
 
 

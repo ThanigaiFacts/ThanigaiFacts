@@ -1,36 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Thanigai Facts</title>
-    <style>
-        body{
-          margin:0;
-          padding:0;
-          text-align:center;
-        }
-        h1{
-          color:red;
-          font-family:cambria math;
-          font-size : 3rem;
-        }
-        .content{
-          margin:15% auto;
-        }
-        @media only screen and (max-width:770px){
-         .content{
-          margin:45% auto;
-        }
-         h1{
-           font-size : 2rem;
-         }
-        }
-    </style>
-</head>
-<body >
+{% extends "base.html" %}
+{% block header %}{% endblock %}
+{% block content %}
 <div class="content">
   <img src="{{ url_for('static',filename = 'images/ThanigaiFacts.png') }}" alt="thanigaiFacts">
-  <h1>Requested URL is not Found!!!</h1>
+  <h1 class="error-label">Requested URL is not Found!!!</h1>
   </div>
-</body>
-</html>
+{% endblock %}
