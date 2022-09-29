@@ -58,6 +58,10 @@ def showDetailBlog(num):
     return render_template("User/blog.html", jobj=res, blogNum=num - 1)
 
 
+@app.route("/news")
+def newsFun():
+    return render_template("User/news.html")
+
 # Admin Part #
 
 @app.route("/admin/")

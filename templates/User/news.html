@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}News{% endblock %}
+{% block content %}
+<div class="container">
+   <div class="row news-row-style">
+     <div class="col-sm-12">
+         <p class="news-title">தலைப்புச் செய்திகள்</p>
+     </div>
+     <div class="col-sm-12">
+         <p class="news-dt">28/08/2022{{ newsDt }}</p>
+     </div>
+     <div class="col-sm-12">
+        <img src ="https://media.giphy.com/media/DVSpPORBAgDwiXCjzf/giphy.gif"  class="news-img">
+     </div>
+     <div class="col-sm-12">
+       <p class="news-data">தலைப்புச் செய்திகள் தலைப்புச் செய்திகள் தலைப்புச் செய்திகள் தலைப்புச் செய்திகள் தலைப்புச் செய்திகள்{{ newsData }}</p>
+     </div>
+   </div>
+    <div class="row btn-news-readmore-row">
+     <div class="col">
+        <button class="btn btn-success btn-lg news-btn">Read More</button>
+     </div>
+    </div>
+    <div class="row btn-news-control-row">
+     <div class="col">
+         <button class="btn btn-success btn-lg news-btn">Back</button>
+     </div>
+     <div class="col">
+        <button class="btn btn-success btn-lg news-btn">Next</button>
+     </div>
+   </div>
+</div>
+
+
+{% endblock %}
