@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 from functools import wraps
 from dotenv import load_dotenv
+from datetime import datetime
 from admin import Admin
 from news import News
 import ShareMarket as shares
@@ -15,6 +16,7 @@ val = 0
 load_dotenv()
 res = None
 newsDataCounter = {}
+Date = datetime.now().strftime("%d/%m/%y")
 
 # Route Starts #
 # User Part
@@ -68,15 +70,10 @@ def showDetailBlog(num):
 @app.route("/news/<int:num>")
 def newsFun(num):
     global newsDataCounter
-    print(num)
-    print(news.URlNextPage)
     if num > news.URlNextPage:
-          print("newOne")
           news.loadNews()
           newsDataCounter[news.URlNextPage] = news.URlNextPage
-    print(news.URlNextPage)
-    print(news.counterPos)
-    return render_template("User/news.html",newsData = news.NewsHeader,newsImg = news.NewsImg,newsLink = news.NewsLink,detailedNews = news.detailNews,pageCounter = news.URlNextPage,posCounter = news.counterPos)
+    return render_template("User/news.html",newsData = news.NewsHeader,newsImg = news.NewsImg,newsLink = news.NewsLink,detailedNews = news.detailNews,pageCounter = news.URlNextPage,posCounter = news.counterPos,newsDt = Date)
 
 # Admin Part #
 

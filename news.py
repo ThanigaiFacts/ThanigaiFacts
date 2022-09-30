@@ -1,4 +1,3 @@
-from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
@@ -12,6 +11,7 @@ class News:
 
     def __init__(self):
         self.URlNextPage = 0
+        self.Date = None
         self.counter = 0
         self.URL = "https://www.dailythanthi.com/News/State/"
         self.NewsDomain = "https://www.dailythanthi.com/"
