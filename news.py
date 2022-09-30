@@ -21,6 +21,7 @@ class News:
         self.counterInc = 12
         self.NewsHeader = []
         self.NewsLink = []
+        self.detailNews = []
         self.NewsImg = []
 
 
@@ -30,6 +31,7 @@ class News:
         self.NewsHeader =[]
         self.NewsLink = []
         self.NewsImg = []
+        self.detailNews = []
 
 
     def generateNewsWithImg(self):
@@ -48,6 +50,15 @@ class News:
            self.NewsHeader.append(title)
            self.NewsLink.append(f"{self.NewsDomain}{link}")
            self.NewsImg.append(img_src)
+
+       for newslink in self.NewsLink:
+           res = requests.get(newslink)
+           soup = BeautifulSoup(res.content, 'html.parser')
+           self.content = soup.find_all("div", class_="details-content-story")[-1].get_text()
+           self.detailNews.append(self.content)
+
+
+
 
     def generateDetailedNews(self):
         res = requests.get(self.NewsLink[self.counter])

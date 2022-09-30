@@ -68,10 +68,15 @@ def showDetailBlog(num):
 @app.route("/news/<int:num>")
 def newsFun(num):
     global newsDataCounter
+    print(num)
+    print(news.URlNextPage)
     if num > news.URlNextPage:
+          print("newOne")
           news.loadNews()
           newsDataCounter[news.URlNextPage] = news.URlNextPage
-    return render_template("User/news.html",newsData = news.NewsHeader,newsImg = news.NewsImg,newsLink = news.NewsLink,pageCounter = news.URlNextPage,posCounter = news.counterPos)
+    print(news.URlNextPage)
+    print(news.counterPos)
+    return render_template("User/news.html",newsData = news.NewsHeader,newsImg = news.NewsImg,newsLink = news.NewsLink,detailedNews = news.detailNews,pageCounter = news.URlNextPage,posCounter = news.counterPos)
 
 # Admin Part #
 

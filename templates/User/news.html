@@ -18,7 +18,7 @@
    </div>
     <div class="row btn-news-readmore-row">
      <div class="col">
-        <button class="btn btn-success btn-lg news-btn">Read More</button>
+        <button class="btn btn-success btn-lg news-btn" id="read-Btn" onclick="detailNews()">Read More</button>
      </div>
     </div>
     <div class="row btn-news-control-row">
@@ -35,8 +35,11 @@
      var c = {{ posCounter }} ;
      var newsTitle  =  {{ newsData|tojson }} ;
      var newsImage  =  {{ newsImg|tojson }} ;
+     var detailNews =  {{ detailedNews|tojson }};
+
      document.getElementById("News-data").innerHTML = newsTitle[c];
      document.getElementById("News-img").src = newsImage[c];
+
 
      function disablebtn()
      {
@@ -58,6 +61,7 @@
        else{
          document.getElementById("News-img").src = newsImage[c];
          document.getElementById("News-data").innerHTML = newsTitle[c];
+
        }
 
      }
@@ -66,8 +70,13 @@
        disablebtn();
        document.getElementById("News-img").src = newsImage[c];
        document.getElementById("News-data").innerHTML = newsTitle[c];
+     }
+
+      function detailNews(){
+        alert("Button Pressed");
 
      }
+
 disablebtn();
 
 </script>
