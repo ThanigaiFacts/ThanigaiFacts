@@ -50,10 +50,8 @@
      }
      function nextNews(){
        c = c + 1;
-       alert(c);
        disablebtn();
        if (newsImage[c] == undefined){
-         alert("undefined");
          document.getElementById("Next-Btn").disabled = true;
          window.location.assign(" {{ url_for('newsFun',num = pageCounter + 1) }}")
        }
