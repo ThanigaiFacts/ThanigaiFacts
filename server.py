@@ -2,15 +2,19 @@ from flask import Flask, render_template, request, url_for, redirect
 from functools import wraps
 from dotenv import load_dotenv
 from admin import Admin
+from news import News
 import ShareMarket as shares
+
 import utility
 
 app = Flask(__name__)
 admin = Admin(app)
+news = News()
 num = 5
 val = 0
 load_dotenv()
 res = None
+newsDataCounter = {}
 
 # Route Starts #
 # User Part
@@ -22,6 +26,9 @@ def user():
 @app.route("/home")
 def IndexFun():
     global num
+    global newsDataCounter
+    newsDataCounter = {}
+    news.clearData()
     num = utility.randomNumberGenerator()
     return render_template("User/index.html")
 
@@ -58,9 +65,13 @@ def showDetailBlog(num):
     return render_template("User/blog.html", jobj=res, blogNum=num - 1)
 
 
-@app.route("/news")
-def newsFun():
-    return render_template("User/news.html")
+@app.route("/news/<int:num>")
+def newsFun(num):
+    global newsDataCounter
+    if num > news.URlNextPage:
+          news.loadNews()
+          newsDataCounter[news.URlNextPage] = news.URlNextPage
+    return render_template("User/news.html",newsData = news.NewsHeader,newsImg = news.NewsImg,newsLink = news.NewsLink,pageCounter = news.URlNextPage,posCounter = news.counterPos)
 
 # Admin Part #
 

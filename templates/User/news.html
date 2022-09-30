@@ -10,10 +10,10 @@
          <p class="news-dt">28/08/2022{{ newsDt }}</p>
      </div>
      <div class="col-sm-12">
-        <img src ="https://media.giphy.com/media/DVSpPORBAgDwiXCjzf/giphy.gif"  class="news-img">
+        <img class="news-img" id="News-img">
      </div>
      <div class="col-sm-12">
-       <p class="news-data">தலைப்புச் செய்திகள் தலைப்புச் செய்திகள் தலைப்புச் செய்திகள் தலைப்புச் செய்திகள் தலைப்புச் செய்திகள்{{ newsData }}</p>
+       <p class="news-data" id="News-data"></p>
      </div>
    </div>
     <div class="row btn-news-readmore-row">
@@ -23,13 +23,55 @@
     </div>
     <div class="row btn-news-control-row">
      <div class="col">
-         <button class="btn btn-outline-primary btn-lg news-btn"><span class="fa-solid fa-chevron-left" style="margin-right:5px;"></span>Back</button>
+         <button class="btn btn-outline-primary btn-lg news-btn" id="Back-Btn" onclick="prevNews()"><span class="fa-solid fa-chevron-left" style="margin-right:5px;"></span>Back</button>
      </div>
      <div class="col">
-        <button class="btn btn-outline-primary btn-lg news-btn">Next<span class="fa-solid fa-chevron-right" style="margin-left:5px;"></span></button>
+        <button class="btn btn-outline-primary btn-lg news-btn" id="Next-Btn" onclick="nextNews()">Next<span class="fa-solid fa-chevron-right" style="margin-left:5px;"></span></button>
      </div>
    </div>
 </div>
 
+<script>
+     var c = {{ posCounter }} ;
+     var newsTitle  =  {{ newsData|tojson }} ;
+     var newsImage  =  {{ newsImg|tojson }} ;
+     document.getElementById("News-data").innerHTML = newsTitle[c];
+     document.getElementById("News-img").src = newsImage[c];
+
+     function disablebtn()
+     {
+     if (c < 1)
+     {
+        document.getElementById("Back-Btn").disabled = true;
+     }
+      else{
+        document.getElementById("Back-Btn").disabled = false;
+      }
+     }
+     function nextNews(){
+       c = c + 1;
+       alert(c);
+       disablebtn();
+       if (newsImage[c] == undefined){
+         alert("undefined");
+         document.getElementById("Next-Btn").disabled = true;
+         window.location.assign(" {{ url_for('newsFun',num = pageCounter + 1) }}")
+       }
+       else{
+         document.getElementById("News-img").src = newsImage[c];
+         document.getElementById("News-data").innerHTML = newsTitle[c];
+       }
+
+     }
+       function prevNews(){
+       c = c - 1;
+       disablebtn();
+       document.getElementById("News-img").src = newsImage[c];
+       document.getElementById("News-data").innerHTML = newsTitle[c];
+
+     }
+disablebtn();
+
+</script>
 
 {% endblock %}
