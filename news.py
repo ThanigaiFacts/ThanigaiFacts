@@ -59,7 +59,6 @@ class News:
 
 
 
-
     def generateDetailedNews(self):
         res = requests.get(self.NewsLink[self.counter])
         soup = BeautifulSoup(res.content, 'html.parser')
