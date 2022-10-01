@@ -179,8 +179,7 @@ footer{
 .text{
   margin:3% auto;
   text-align: center;
-  font-size:2rem;
-
+  font-size:3rem;
 }
 .img-style{
   display: block;
@@ -188,6 +187,7 @@ footer{
 }
 
 .guess-row-style{
+ text-align:center;
  margin:auto;
  padding:2%
 
@@ -196,9 +196,20 @@ footer{
   color:red;
   font-size:2rem;
 }
+.guess-input{
+  outline:none;
+  width:10%;
+  border:1px solid blue;
+  padding:1%;
+  color:red;
+  font-size:1.5rem;
+  font-family:cambria math;
+}
 .guessBtn{
   margin-top:3%;
-  font-size:1.5rem;
+  font-size:1.7rem;
+  letter-spacing:2px;
+  width:20%;
 }
 
 /* Blog Index style */

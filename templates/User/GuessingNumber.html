@@ -9,7 +9,7 @@
      <div class="container" id = "guess-input-div" style="visibility:visible;">
          <div class="row guess-row-style">
              <div class="col-sm-12">
-                 <p class="guess-label">Guess Number Between (1 - 10)</p>
+                 <p class="guess-label">Guess Number Between<br>(1 - 10)</p>
              </div>
              <div class="col-sm-12">
                  <input type="number" class="guess-input" id="userGuess" name = "userGuessValue">
@@ -20,40 +20,37 @@
          </div>
      </div>
 
-<!--
-<script>
-    function guessfun(){
-      var guess = document.getElementById("userGuess").value
-      var url = "{{ url_for('NumberGuessing_fun',value = guess) }}";
-      window.location(url);
-    }
-
-</script>
--->
 <script>
 function guessCheck(){
   var actualValue = {{ number }};
   var guessValue =  document.getElementById("userGuess").value;
   if (guessValue == 0){
       document.getElementById("guess-resp-text").style.color = "brown";
+      document.getElementById("userGuess").focus();
      }
   else if ( guessValue  >  actualValue){
       document.getElementById("guess-resp-text").innerHTML = "You Guessed Higher";
       document.getElementById("guess-resp-text").style.color = "red";
       document.getElementById("guess-img").src = "https://media.giphy.com/media/W0Pts08xV5JJp2Nj4N/giphy.gif";
+      document.getElementById("userGuess").value = "";
+      document.getElementById("userGuess").focus();
       alert("Oops,You Guessed Higher");
+
   }
   else if (guessValue  <  actualValue){
       document.getElementById("guess-resp-text").innerHTML = "You Guessed Lower";
       document.getElementById("guess-resp-text").style.color = "orange";
       document.getElementById("guess-img").src = "https://media.giphy.com/media/DVSpPORBAgDwiXCjzf/giphy.gif";
+      document.getElementById("userGuess").focus();
+      document.getElementById("userGuess").value = "";
       alert("You Guessed Lower, try again");
     }
   else {
       document.getElementById("guess-resp-text").innerHTML = "You Guessed Correctly!!";
       document.getElementById("guess-resp-text").style.color = "green";
       document.getElementById("guess-img").src = "https://media.giphy.com/media/hz6L3FwCc3hI2zUAFI/giphy.gif";
-      alert("Hurrah! You Guessed Correctly..");
+      document.getElementById("userGuess").value = "";
+      document.getElementById("userGuess").focus();
       document.getElementById("guess-input-div").style.visibility = "hidden";
      }
 }
