@@ -7,7 +7,7 @@ window.onunload = function () { null };
 
 
 $(document).bind("contextmenu",function(e){
- alert("Right Click is Prevented");
+  alert("Right Click is Prevented");
   return false;
 });
 

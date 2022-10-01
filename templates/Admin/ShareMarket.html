@@ -53,21 +53,21 @@
       <tr>
         <td>
           <label>
-               Qty
+              Buy Price
           </label>
         </td>
         <td>
-          : <input type="text" name="BuyQty" value = {{ BQty }}>
+          : <input type="text" name="BuyPrice" onkeypress= "return checkNum(event)" value = {{ BPirce }}>
         </td>
       </tr>
       <tr>
         <td>
           <label>
-              Buy Price
+               Qty
           </label>
         </td>
         <td>
-          : <input type="text" name="BuyPrice" value = {{ BPirce }}>
+          : <input type="text" name="BuyQty" onkeypress= "return checkInt(event)" value = {{ BQty }}>
         </td>
       </tr>
 

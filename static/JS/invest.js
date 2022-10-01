@@ -34,5 +34,15 @@ function companyListChanged(){
   }
 
 }
+
+function checkNum(event){
+   return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode == 46);
+}
+
+function checkInt(event){
+  return (event.keyCode >= 48 && event.keyCode <= 57)
+}
+
+
 actionChanged();
 

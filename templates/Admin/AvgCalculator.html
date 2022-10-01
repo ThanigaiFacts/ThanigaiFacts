@@ -18,7 +18,7 @@
           </label>
         </td>
         <td>
-          : <input type="text" name="FirstBuyPrice" value = {{ FBPirce }}>
+          : <input type="text" name="FirstBuyPrice" onkeypress= "return checkNum(event)" value = {{ FBPirce }} >
         </td>
       </tr>
       <tr>
@@ -28,7 +28,7 @@
           </label>
         </td>
         <td>
-          : <input type="text" name="FirstBuyQty" value = {{ FBQty }}>
+          : <input type="text" name="FirstBuyQty" onkeypress= "return checkInt(event)" value = {{ FBQty }}>
         </td>
       </tr>
       <tr>
@@ -38,7 +38,7 @@
           </label>
         </td>
         <td>
-          : <input type="text" name="SecondBuyPrice" value = {{ SBPrice }}>
+          : <input type="text" name="SecondBuyPrice" onkeypress= "return checkNum(event)"  value = {{ SBPrice }}>
         </td>
       </tr>
       <tr>
@@ -48,7 +48,7 @@
           </label>
         </td>
         <td>
-          : <input type="text" name="SecondBuyQty" value = {{ SBQty }}>
+          : <input type="text" name="SecondBuyQty" onkeypress= "return checkInt(event)" value = {{ SBQty }}>
         </td>
       </tr>
 
@@ -64,10 +64,17 @@
   </div>
 </div>
   </div>
+ <script>
 {% if Fempty == True %}
-  <script>
-      alert("{{ outText }}")
-  </script>
+      alert("{{ outText }}") ;
 {% endif %}
 
+function checkNum(event){
+   return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode == 46);
+}
+
+function checkInt(event){
+  return (event.keyCode >= 48 && event.keyCode <= 57)
+}
+ </script>
 {% endblock %}
