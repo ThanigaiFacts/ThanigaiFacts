@@ -146,7 +146,7 @@
 .news-row-style{
   color:red;
   padding:1%;
-  margin: 15% auto 10% auto;
+  margin: 10% auto;
   border:none;
 }
 
@@ -178,7 +178,7 @@
   margin:auto;
 }
 .btn-news-control-row{
-  margin:2% auto;
+  margin:5% auto 2% auto;
 }
 
 .news-btn{

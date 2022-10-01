@@ -179,7 +179,6 @@ footer{
 .text{
   margin:3% auto;
   text-align: center;
-  color:red;
   font-size:2rem;
 
 }
@@ -267,7 +266,7 @@ footer{
   font-size:1.7rem;
   font-weight:500;
   line-height:1.7;
-  margin:3% auto;
+  margin: 1% auto;
   width:70%;
 }
 .btn-readmore-row{

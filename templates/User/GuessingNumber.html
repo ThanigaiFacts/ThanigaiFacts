@@ -1,20 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Game {% endblock %}
 {% block content %}
-     {% if guessedVal >  number %}
-         <p class = "text" style="color:red;">You Guessed Higher</p>
-         <img src ="https://media.giphy.com/media/W0Pts08xV5JJp2Nj4N/giphy.gif" class="img-style">
-     {% elif guessedVal  <  number  %}
-         <p class = "text" style="color:orange;">You Guessed Lower</p>
-         <img src ="https://media.giphy.com/media/DVSpPORBAgDwiXCjzf/giphy.gif"  class="img-style">
-     {% else %}
-         <p class = "text" style="color:green;">You Guessed Correctly!!</p>
-         <img src ="https://media.giphy.com/media/hz6L3FwCc3hI2zUAFI/giphy.gif"  class="img-style">
-     {% endif %}
+      <div>
+         <p class = "text" id="guess-resp-text">Number Guessing Game</p>
+         <img src ="https://media1.giphy.com/media/xUn3CftPBajoflzROU/200w.webp?cid=ecf05e47vnkyt2zffj8sz4htd27jxd8dcc9mt2kjeky9l5y1&rid=200w.webp&ct=g" class="img-style" id="guess-img">
+      </div>
 
-     <div class="container" id = "guess-input-div">
+     <div class="container" id = "guess-input-div" style="visibility:visible;">
          <div class="row guess-row-style">
-             <form action="{{ url_for('NumberGuessing_fun') }}" method="post">
              <div class="col-sm-12">
                  <p class="guess-label">Guess Number Between (1 - 10)</p>
              </div>
@@ -22,9 +15,8 @@
                  <input type="number" class="guess-input" id="userGuess" name = "userGuessValue">
              </div>
              <div class="col-sm-12">
-                 <input type = "submit" class="btn  btn-success guessBtn" value = "Guess">
+                 <button class="btn  btn-success guessBtn" onclick="guessCheck()">Guess</button>
              </div>
-             </form>
          </div>
      </div>
 
@@ -39,11 +31,32 @@
 </script>
 -->
 <script>
-  if({{ guessedVal }} == {{ number }}){
+function guessCheck(){
+  var actualValue = {{ number }};
+  var guessValue =  document.getElementById("userGuess").value;
+  if (guessValue == 0){
+      document.getElementById("guess-resp-text").style.color = "brown";
+     }
+  else if ( guessValue  >  actualValue){
+      document.getElementById("guess-resp-text").innerHTML = "You Guessed Higher";
+      document.getElementById("guess-resp-text").style.color = "red";
+      document.getElementById("guess-img").src = "https://media.giphy.com/media/W0Pts08xV5JJp2Nj4N/giphy.gif";
+      alert("Oops,You Guessed Higher");
+  }
+  else if (guessValue  <  actualValue){
+      document.getElementById("guess-resp-text").innerHTML = "You Guessed Lower";
+      document.getElementById("guess-resp-text").style.color = "orange";
+      document.getElementById("guess-img").src = "https://media.giphy.com/media/DVSpPORBAgDwiXCjzf/giphy.gif";
+      alert("You Guessed Lower, try again");
+    }
+  else {
+      document.getElementById("guess-resp-text").innerHTML = "You Guessed Correctly!!";
+      document.getElementById("guess-resp-text").style.color = "green";
+      document.getElementById("guess-img").src = "https://media.giphy.com/media/hz6L3FwCc3hI2zUAFI/giphy.gif";
+      alert("Hurrah! You Guessed Correctly..");
       document.getElementById("guess-input-div").style.visibility = "hidden";
-  }
-  else{
-     document.getElementById("guess-input-div").style.visibility = "visible";
-  }
+     }
+}
+guessCheck();
 </script>
 {% endblock %}

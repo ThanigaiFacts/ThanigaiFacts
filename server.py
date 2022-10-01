@@ -49,10 +49,7 @@ def contact():
 
 @app.route("/NumberGuessing"  ,methods=['POST', 'GET'])
 def NumberGuessing_fun():
-    if request.method == 'POST':
-        value = int(request.form["userGuessValue"])
-        return render_template("User/GuessingNumber.html", number=num, guessedVal= value)
-    return render_template("User/GuessingNumber.html",number=num,guessedVal = val)
+    return render_template("User/GuessingNumber.html",number=num)
 
 
 @app.route("/Blog")
