@@ -4,12 +4,16 @@ import smtplib
 import os
 from email.message import EmailMessage
 
+
+
 def getBlogData():
     # https://mocki.io/fake-json-api --> json website
     return requests.get(os.getenv("BLOG_END_POINT")).json()
 
+
 def randomNumberGenerator():
     return random.randint(1, 10)
+
 
 def send_mail(name,mail,mobile,msg):
     senderMail = 'thanigaisolutions@gmail.com'

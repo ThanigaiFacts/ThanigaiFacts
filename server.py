@@ -1,25 +1,25 @@
 from flask import Flask, render_template, request, url_for, redirect
 from functools import wraps
 from dotenv import load_dotenv
-from datetime import datetime
 from admin import Admin
 from news import News
 import ShareMarket as shares
+from placeholder import PlaceHolder
 
-import utility
+# initialization #
 
 app = Flask(__name__)
-admin = Admin(app)
-news = News()
-num = 5
-val = 0
 load_dotenv()
-res = None
-newsDataCounter = {}
-Date = datetime.now().strftime("%d/%m/%y")
+admin = Admin()
+news = News()
+variable = PlaceHolder(news)
+
 
 # Route Starts #
-# User Part
+
+# --- User Part Starts --- #
+
+# Home page Routing #
 @app.route("/")
 def user():
     return redirect(url_for('IndexFun'))
@@ -27,56 +27,54 @@ def user():
 
 @app.route("/home")
 def IndexFun():
-    global num
-    global newsDataCounter
-    newsDataCounter = {}
-    news.clearData()
-    num = utility.randomNumberGenerator()
+    variable.initiate_variables()
     return render_template("User/index.html")
 
 
-@app.route("/contact" ,methods=['POST', 'GET'])
+# Contact page Routing #
+@app.route("/contact", methods=['POST', 'GET'])
 def contact():
-    if request.method == 'POST':
-        Name = request.form['userName']
-        Mail = request.form['userMail']
-        Mobile = request.form['userMobile']
-        Message = request.form['userMessage']
-        MsgSent,msgStatus = utility.send_mail(Name,Mail,Mobile,Message)
-        return render_template("User/contact.html",msg = msgStatus,msgSent = MsgSent )
-    return render_template("User/contact.html",msgSent = False )
+    msgSentStatus,msgStatus = admin.contact_admin()
+    return render_template("User/contact.html", msg = msgStatus,msgSent=msgSentStatus)
 
 
-@app.route("/NumberGuessing"  ,methods=['POST', 'GET'])
+# Guessing Game page Routing #
+@app.route("/NumberGuessing", methods=['POST', 'GET'])
 def NumberGuessing_fun():
-    return render_template("User/GuessingNumber.html",number=num)
+    variable.generateRandomNumber()
+    return render_template("User/GuessingNumber.html", number=variable.randomNum)
 
 
+# Blog page Routing #
 @app.route("/Blog")
 def blogIndexFun():
-    global res
-    res = utility.getBlogData()
-    return render_template("User/blogindex.html", jobj=res)
+    variable.blogResp = variable.utilityObj.getBlogData()
+    return render_template("User/blogindex.html", jobj=variable.blogResp)
 
 
 @app.route("/Detail_Blog/<int:num>")
 def showDetailBlog(num):
-    return render_template("User/blog.html", jobj=res, blogNum=num - 1)
+    return render_template("User/blog.html", jobj=variable.blogResp, blogNum=num - 1)
 
 
+# News page Routing #
 @app.route("/news/<int:num>")
 def newsFun(num):
-    global newsDataCounter
-    if num > news.URlNextPage:
-          news.loadNews()
-          newsDataCounter[news.URlNextPage] = news.URlNextPage
-    return render_template("User/news.html",newsData = news.NewsHeader,newsImg = news.NewsImg,newsLink = news.NewsLink,detailedNews = news.detailNews,pageCounter = news.URlNextPage,posCounter = news.counterPos,newsDt = Date)
+    news.loadNews(num)
+    return render_template("User/news.html", newsData=news.NewsHeader, newsImg=news.NewsImg, newsLink=news.NewsLink,
+                           detailedNews=news.detailNews, pageCounter=news.URlNextPage, posCounter=news.counterPos,
+                           newsDt=news.Date)
 
-# Admin Part #
+# -- User Part Ends -- #
 
+
+# -- Admin Part Starts -- #
+
+# Admin Home page #
 @app.route("/admin/")
 def admin_page():
     return redirect(url_for('admin_home'))
+
 
 @app.route("/admin/home")
 @admin.login_required
@@ -84,70 +82,48 @@ def admin_home():
     return render_template("Admin/admin.html")
 
 
+# Admin Login Page #
 @app.route("/admin/login", methods=['POST', 'GET'])
 def admin_login_page():
-    if not admin.isLogin:
-        if request.method == 'POST':
-            UserName = request.form['userName']
-            Passw = request.form['password']
-            if admin.login(UserName, Passw):
-                return redirect(url_for('admin_home'))
-            else:
-                return render_template("Admin/login.html", LoginStatus="Invalid Credentials")
-        return render_template("Admin/login.html")
-
-    else:
-        return redirect(url_for('admin_home'))
+    redirectPage,LoginMsg = admin.proceedLogin()
+    return render_template(redirectPage,LoginStatus = LoginMsg)
 
 
 @app.route("/admin/logout")
 def admin_logout():
-    if admin.isLogin:
-        admin.isLogin = False
-    return redirect(url_for('admin_login_page'))
+    redirectPage,LoginMsg = admin.logOut()
+    return render_template(redirectPage,LoginStatus = LoginMsg)
 
 
-#admin Share Market Part #
+# -- Admin Share Market Part starts -- #
 
+#  Stock Average Calculator Page #
 @app.route("/admin/avg", methods=['POST', 'GET'])
 @admin.login_required
 def AvgCalculator():
-        if request.method == 'POST':
-            FBQ = request.form['FirstBuyQty']
-            FBP = request.form['FirstBuyPrice']
-            SBQ = request.form['SecondBuyQty']
-            SBP = request.form['SecondBuyPrice']
-            isFieldsEmpty, Text = shares.CalculateAveragePrice(FBQ, FBP, SBQ, SBP)
-            if isFieldsEmpty:
-                return render_template("Admin/AvgCalculator.html", Fempty = isFieldsEmpty,outText=Text)
-            else:
-                return render_template("Admin/AvgCalculator.html", Fempty = isFieldsEmpty, outText=Text, FBQty=FBQ, FBPirce=FBP, SBQty=SBQ,
-                                       SBPrice=SBP)
-        else:
-            return render_template("Admin/AvgCalculator.html",Fempty = None)
+    isFieldEmpty,Text,FBQ,FBP,SBQ,SBP = shares.CalculateAveragePrice()
+    return render_template("Admin/AvgCalculator.html", Fempty=isFieldEmpty, outText=Text,FBQty = FBQ,FBPirce = FBP,SBQty = SBQ,SBPrice = SBP)
 
-
+#  Stock Investing Page #
 @app.route("/admin/sm", methods=['POST', 'GET'])
 @admin.login_required
 def ShareMarket():
-       company =  shares.getCompanyList()
-       if request.method == 'POST':
-           orderType = request.form['ActionList']
-           CompName = request.form['CompanyName']
-           FBQ = request.form['BuyQty']
-           FBP = request.form['BuyPrice']
-           isFieldsEmpty, Text = shares.ShareMarketData(FBQ, FBP,CompName,orderType)
-           return render_template("Admin/ShareMarket.html", Fempty = isFieldsEmpty, outText=Text,Companies = company)
+    company = shares.getCompanyList()
+    isFieldsEmpty, Text = shares.ShareMarketData()
+    return render_template("Admin/ShareMarket.html", Fempty=isFieldsEmpty,outText=Text, Companies=company)
 
 
-       else:
-            return render_template("Admin/ShareMarket.html",Fempty = None,Companies = company)
+# -- Share Market Page Ends --#
+
+# -- Admin Part Ends -- #
 
 
+# Error Page  #
 @app.errorhandler(404)
 def not_found(e):
     return render_template("error.html")
 
 
+# Main App #
 if __name__ == "__main__":
     app.run(debug=True)
