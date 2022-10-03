@@ -12,20 +12,16 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item item-style"><a href="{{ url_for('IndexFun') }}" class="nav-link active link-style">Home</a></li>
           <li class="nav-item item-style"><a href="{{ url_for('blogIndexFun') }}" class="nav-link link-style">Blog</a></li>
-          <!--
           <li class="nav-item item-style">
-           <div class="dropdown">
-              <button type="button" class="btn btn-outline-success text-light dropdown-toggle link-style" data-bs-toggle="dropdown">
-               My Work
-              </button>
-              <ul class="dropdown-menu dd-menu-style">
-                <li><a class="dropdown-item dd-link-style" href="{{ url_for('NumberGuessing_fun') }}">Game</a></li>
-              </ul>
-           </div>
-          </li>-->
-           <li class="nav-item item-style"><a href="{{ url_for('NumberGuessing_fun') }}" class="nav-link link-style">Game</a></li>
-           <li class="nav-item item-style"><a href="{{ url_for('newsFun',num = 1) }}" class="nav-link link-style">News</a></li>
-           <li class="nav-item item-style"><a href="{{ url_for('admin_home') }}" class="nav-link link-style">Admin</a></li>
+             <div class="dropdown">
+                <a class="nav-link link-style dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+                  <ul class="dropdown-menu dd-menu-style">
+                     <li><a href="{{ url_for('newsFun',num = 1) }}" class="dropdown-item  dd-link-style">Daily News</a></li>
+                     <li><a href="{{ url_for('NumberGuessing_fun') }}" class="dropdown-item  dd-link-style">Guessing Game</a></li>
+                  </ul>
+             </div>
+          </li>
+          <li class="nav-item item-style"><a href="{{ url_for('admin_home') }}" class="nav-link link-style">Admin</a></li>
         </ul>
         </div>
       </div>
