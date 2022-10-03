@@ -384,18 +384,24 @@ outline:none;
 .login-icon{
   color:blue;
   font-size:2rem;
-
 }
+.admin-login-row{
+  margin:10% auto;
+}
+
+
 .admin-login-form-style{
- margin:2% 17%;
+ margin:2% auto;
  padding:2%;
- border:1px solid grey;
+ width:40%;
  border-radius:20px;
+ box-shadow: 5px 10px 10px 8px #888888;
+ border:1px solid grey;
 }
 
 .login-table {
     margin:1% auto;
-    width:50%;
+    width:80%;
     text-align:center;
     border-collapse: separate;
     border-spacing: 0 2em;
