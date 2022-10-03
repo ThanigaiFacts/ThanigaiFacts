@@ -18,7 +18,7 @@
           </label>
         </td>
         <td>
-          : <input type="text" name="FirstBuyPrice" onkeypress= "return checkNum(event)" value = {{ FBPirce }} >
+          : <input type="text" name="FirstBuyPrice" onkeypress= "return checkNum(event)" value = {{ FBPirce }}>
         </td>
       </tr>
       <tr>
@@ -76,5 +76,6 @@ function checkNum(event){
 function checkInt(event){
   return (event.keyCode >= 48 && event.keyCode <= 57)
 }
+
  </script>
 {% endblock %}

@@ -5,7 +5,8 @@
 <div class = "container" style="margin:10% auto;">
    <div class="row"  style="margin:0;">
      <div class="col">
-     <form action="{{ url_for('contact') }}" method="post" style="margin:2% auto;">
+         <!--action="{{ url_for('contact') }}"-->
+     <form action = "{{ url_for('contact') }}" method="post" name = "contact-form" onsubmit="return validateForm()" style="margin:2% auto;">
 
       <h4 class="contact-title">Contact Me</h4>
       <div class = "contact-body">
@@ -14,38 +15,51 @@
         </label>
          <br>
 
-         <input type="text" name="userName" id = "username">
+         <input type="text" name="userName" id = "username" placeholder="Your Name" required>
          <br>
          <label>
             Mail ID
          </label>
          <br>
-         <input type="email" name="userMail">
+         <input type="email" name="userMail"  placeholder="Your Email ID" required>
          <br>
           <label>
                 Mobile No.
           </label>
          <br>
-          <input type="number" name="userMobile"  onKeyPress="if(this.value.length == 10) return false;">
+          <input type="number" name="userMobile"  placeholder="Your Mobile Number" onKeyPress="if(this.value.length == 10) return false;" required>
           <br>
           <label>
               Message
           </label>
          <br>
           <!--<input type="text" name="userMessage">-->
-          <textarea name="userMessage"></textarea>
+          <textarea name="userMessage"  placeholder="Your Message(Optional)"></textarea>
           <br>
-         <input type="submit" class="btn btn-lg btn-success" name="SubmitBtn" value="Send">
+         <input type="submit" class="btn btn-lg btn-success" name="SubmitBtn" value="Send" >
          <br>
          <p class="output-Text" style="color:red;">{{ msg }}</p>
    </div>
   </form>
   </div>
 <script>
+
 document.getElementById("username").focus();
+
 {% if msgSent == True %}
    alert("{{ msg }}")
 {% endif %}
+
+
+function validateForm(){
+  var mobileNum =  document.forms["contact-form"]["userMobile"];
+  if (mobileNum.value.length < 10){
+    alert("Incorrect Mobile Number");
+    mobileNum.focus();
+    event.preventDefault();
+  }
+}
+
 </script>
 
 {% endblock %}

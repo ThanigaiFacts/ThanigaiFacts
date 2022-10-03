@@ -34,8 +34,8 @@ def IndexFun():
 # Contact page Routing #
 @app.route("/contact", methods=['POST', 'GET'])
 def contact():
-    msgSentStatus,msgStatus = admin.contact_admin()
-    return render_template("User/contact.html", msg = msgStatus,msgSent=msgSentStatus)
+    msgSentStatus, msgStatus = admin.contact_admin()
+    return render_template("User/contact.html", msg=msgStatus, msgSent=msgSentStatus)
 
 
 # Guessing Game page Routing #

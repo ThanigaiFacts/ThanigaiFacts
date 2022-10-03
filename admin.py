@@ -45,7 +45,10 @@ class Admin:
             Mail = request.form['userMail']
             Mobile = request.form['userMobile']
             Message = request.form['userMessage']
-            MsgSent, msgStatus = utility.send_mail(Name, Mail, Mobile, Message)
+            if len(Name) == 0 or len(Mail) == 0 or len(Mobile) == 0:
+                return False,""
+            else:
+                MsgSent, msgStatus = utility.send_mail(Name, Mail, Mobile, Message)
             return MsgSent, msgStatus
         return False,''
 
