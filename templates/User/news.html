@@ -18,7 +18,7 @@
    </div>
     <div class="row btn-news-readmore-row">
      <div class="col">
-        <button class="btn btn-success btn-lg news-btn" id="read-Btn" onclick="detailNews()">Read More</button>
+        <button class="btn btn-success btn-lg news-btn" id="read-Btn" onclick="readMore()">Read More</button>
      </div>
     </div>
     <div class="row btn-news-control-row">
@@ -39,6 +39,11 @@
 
      document.getElementById("News-data").innerHTML = newsTitle[c];
      document.getElementById("News-img").src = newsImage[c];
+
+       function readMore(){
+        document.getElementById("News-data").innerHTML = detailNews[c];
+        document.getElementById("News-data").style.textAlign = "justify"
+     }
 
 
      function disablebtn()
@@ -72,9 +77,7 @@
        document.getElementById("News-data").innerHTML = newsTitle[c];
      }
 
-      function detailNews(){
-        alert("Button Pressed");
-     }
+
 
 disablebtn();
 
