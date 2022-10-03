@@ -1,14 +1,19 @@
+import os
 from flask import Flask, render_template, request, url_for, redirect
 from functools import wraps
 from dotenv import load_dotenv
 from admin import Admin
 from news import News
+from datetime import timedelta
 import ShareMarket as shares
 from placeholder import PlaceHolder
 
 # initialization #
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
+
 load_dotenv()
 admin = Admin()
 news = News()
@@ -86,13 +91,18 @@ def admin_home():
 @app.route("/admin/login", methods=['POST', 'GET'])
 def admin_login_page():
     redirectPage,LoginMsg = admin.proceedLogin()
-    return render_template(redirectPage,LoginStatus = LoginMsg)
+    if redirectPage == "LoginSuccess":
+        return redirect(url_for("admin_home"))
+    else:
+        return render_template(redirectPage,LoginStatus = LoginMsg)
 
 
 @app.route("/admin/logout")
 def admin_logout():
-    redirectPage,LoginMsg = admin.logOut()
-    return render_template(redirectPage,LoginStatus = LoginMsg)
+    #redirectPage,LoginMsg = admin.logOut()
+    redirectPage = admin.logOut()
+    return redirect(redirectPage)
+    #return render_template(redirectPage,LoginStatus = LoginMsg)
 
 
 # -- Admin Share Market Part starts -- #
