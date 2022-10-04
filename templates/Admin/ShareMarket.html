@@ -10,7 +10,7 @@
      <div class="col">
       <form action="{{ url_for('ShareMarket') }}" method="post" style="margin:3% auto;padding:3%;">
 
-    <table class="ShareMarket-table">
+    <table class="ShareMarket-table" id="sm-inv-table">
          <h4 style="color:red;text-align:center;font-size:2rem;">Share Market Details</h4>
         <tr>
         <td >
@@ -47,7 +47,7 @@
           </label>
         </td>
         <td>
-          : <input type="text" id ="CompName" name="CompanyName" value = {{ CompName }}>
+          : <input type="text" id ="CompName" name="CompanyName"  value = {{ CompName }}>
         </td>
       </tr>
       <tr>

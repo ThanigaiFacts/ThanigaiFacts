@@ -9,7 +9,7 @@
      <div class="col">
           <form action="{{ url_for('AvgCalculator') }}" method="post" style="margin:3% auto;padding:3%;">
 
-    <table style="margin:auto;padding:3%;" class="ShareMarket-table">
+    <table style="margin:auto;padding:3%;" class="ShareMarket-table" id="sm-avg-table">
          <h4 style="color:red;text-align:center;font-size:2rem;">Average Calculator</h4>
       <tr>
         <td>
@@ -76,6 +76,6 @@ function checkNum(event){
 function checkInt(event){
   return (event.keyCode >= 48 && event.keyCode <= 57)
 }
-
+document.querySelector("#sm-avg-table input").focus();
  </script>
 {% endblock %}

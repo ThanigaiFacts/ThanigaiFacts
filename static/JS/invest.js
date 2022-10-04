@@ -45,4 +45,5 @@ function checkInt(event){
 
 
 actionChanged();
+document.getElementById("CompName").focus();
 
