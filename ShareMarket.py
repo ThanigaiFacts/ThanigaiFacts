@@ -156,11 +156,11 @@ def ShareMarketData():
         BuyQty = request.form['BuyQty']
         BuyPrice = request.form['BuyPrice']
         if len(BuyQty) > 0 and len(BuyPrice) > 0 and len(CompanyName) > 0:
-            return False, postData(BuyQty, BuyPrice, CompanyName, ordertype)
+            return False, postData(BuyQty, BuyPrice, CompanyName, ordertype),True
         else:
-            return True, f"Enter all the Fields"
+            return True, f"Enter all the Fields",True
     else:
-        return None,""
+        return None,"",False
 
 
 

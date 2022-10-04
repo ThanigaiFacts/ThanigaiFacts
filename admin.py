@@ -38,15 +38,15 @@ class Admin:
                 Passw = request.form['password']
                 isloginSuccess,isFieldsEmpty = self.login(UserName, Passw)
                 if isFieldsEmpty:
-                    return "Admin/login.html", "Enter all Fields"
+                    return "Admin/login.html", "Enter all Fields",True
                 else:
                     if isloginSuccess:
-                      return "LoginSuccess",""
+                      return "LoginSuccess","",False
                     else:
-                      return "Admin/login.html","Invalid Credentials"
-            return "Admin/login.html",""
+                      return "Admin/login.html","Invalid Credentials",True
+            return "Admin/login.html","",False
         else:
-            return  "Admin/admin.html",""
+            return  "Admin/admin.html","",False
 
     def contact_admin(self):
         if request.method == 'POST':

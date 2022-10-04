@@ -90,11 +90,11 @@ def admin_home():
 # Admin Login Page #
 @app.route("/admin/login", methods=['POST', 'GET'])
 def admin_login_page():
-    redirectPage,LoginMsg = admin.proceedLogin()
+    redirectPage,LoginMsg,showAlert = admin.proceedLogin()
     if redirectPage == "LoginSuccess":
         return redirect(url_for("admin_home"))
     else:
-        return render_template(redirectPage,LoginStatus = LoginMsg)
+        return render_template(redirectPage,LoginStatus = LoginMsg,show_alert = showAlert)
 
 
 @app.route("/admin/logout")
@@ -119,8 +119,8 @@ def AvgCalculator():
 @admin.login_required
 def ShareMarket():
     company = shares.getCompanyList()
-    isFieldsEmpty, Text = shares.ShareMarketData()
-    return render_template("Admin/ShareMarket.html", Fempty=isFieldsEmpty,outText=Text, Companies=company)
+    isFieldsEmpty, Text,showAlert = shares.ShareMarketData()
+    return render_template("Admin/ShareMarket.html", Fempty=isFieldsEmpty,outText=Text,show_alert = showAlert ,Companies=company)
 
 
 # -- Share Market Page Ends --#
