@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %} Admin {% endblock %}
 {% block content %}
-<div class = "container-fluid" >
+<div class = "container-fluid">
    <div class="row admin-login-row">
      <div class="col-sm-12">
           <form action="{{ url_for('admin_login_page') }}" method="post" class="admin-login-form-style">
@@ -42,4 +42,11 @@
      </div>
    </div>
 </div>
+<!--
+<script>
+ {% if show_alert %}
+     show_alert(" {{ LoginStatus }} ");
+ {% endif %}
+</script>
+-->
 {% endblock %}
