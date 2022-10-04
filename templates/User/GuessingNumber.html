@@ -34,7 +34,8 @@ function guessCheck(){
       document.getElementById("guess-img").src = "https://media.giphy.com/media/W0Pts08xV5JJp2Nj4N/giphy.gif";
       document.getElementById("userGuess").value = "";
       document.getElementById("userGuess").focus();
-      alert("Oops,You Guessed Higher");
+      //alert("Oops,You Guessed Higher");
+      show_alert("Oops,You Guessed Higher");
 
   }
   else if (guessValue  <  actualValue){
@@ -43,7 +44,9 @@ function guessCheck(){
       document.getElementById("guess-img").src = "https://media.giphy.com/media/DVSpPORBAgDwiXCjzf/giphy.gif";
       document.getElementById("userGuess").focus();
       document.getElementById("userGuess").value = "";
-      alert("You Guessed Lower, try again");
+      //alert("You Guessed Lower, try again");
+      show_alert("You Guessed Lower, try again");
+
     }
   else {
       document.getElementById("guess-resp-text").innerHTML = "You Guessed Correctly!!";

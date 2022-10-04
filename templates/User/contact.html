@@ -47,14 +47,14 @@
 document.getElementById("username").focus();
 
 {% if msgSent == True %}
-   alert("{{ msg }}")
+   show_alert(" {{ msg }} ");
 {% endif %}
 
 
 function validateForm(){
   var mobileNum =  document.forms["contact-form"]["userMobile"];
   if (mobileNum.value.length < 10){
-    alert("Incorrect Mobile Number");
+    show_alert("Incorrect Mobile Number");
     mobileNum.focus();
     event.preventDefault();
   }

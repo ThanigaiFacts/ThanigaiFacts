@@ -30,7 +30,35 @@
  </div>
  {% endblock %}
 
+ <div id="alert-div">
+     <h3 id="alert-div-title">Message</h3>
+     <div id="alert-box">
+         <p id="alert-text" ></p>
+         <div id="alert-button-div">
+             <button id="alert-ok-btn" onclick="hide_alert()">Ok</button>
+         </div>
+     </div>
+ </div>
+
+ <script>
+   function show_alert(msg){
+      document.getElementById("alert-div").style.visibility = "visible";
+      document.getElementById("alert-text").innerHTML = msg;
+      document.getElementById("main-content").backgroundColor = "red";
+      //document.getElementById("main-content").background = "0.3";
+   }
+
+   function hide_alert(){
+      document.getElementById("alert-div").style.visibility = "hidden";
+      document.getElementById("main-content").backgroundColor = "white";
+   }
+ </script>
+<!--style="position:relative; z-index: -1;"-->
+<div id="main-content">
  {% block content %}{% endblock %}
+</div>
+
+
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

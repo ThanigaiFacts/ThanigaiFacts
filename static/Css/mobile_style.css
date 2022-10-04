@@ -193,11 +193,6 @@
   letter-spacing:2px;
 }
 
-
-
-
-
-
 /* Admin */
 
 /* Login page */
@@ -249,5 +244,55 @@
   font-size : 2.5rem;
   line-height:1.5;
  }
+
+/* Alert Section */
+
+#alert-div{
+  position:absolute;
+  border:3px solid green;
+  width:85%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  color:red;
+  background-color:#fff;
+  visibility:hidden;
+  z:index:1;
+  }
+
+#alert-div-title{
+  font-family:cambria math;
+  font-size:1.5rem;
+  margin-top:0;
+  color:#fff;
+  padding:1.5% 2%;
+  background-color:green;
+  letter-spacing:1px;
+}
+
+#alert-box{
+  padding:3% 5%;
+}
+
+#alert-text{
+  font-size:1.5rem;
+  letter-spacing:0.5px;
+  text-align:justify;
+  font-weight:bold;
+  font-family:cambria;
+}
+#alert-button-div{
+ text-align:center;
+}
+
+#alert-ok-btn{
+   font-size:1.4rem;
+   color:#fff;
+   width:40%;
+   padding:1%;
+   background-color:green;
+   margin: 3% auto 3% auto;
+   border-radius:10%;
+}
 
 }
