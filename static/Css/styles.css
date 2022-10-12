@@ -34,6 +34,8 @@ body{
   box-shadow: 5px 10px 10px 8px cyan;
   animation : anim 1s linear infinite;
 }
+
+/* Need to add these in Django style page */
 .logo-text-div{
    display:flex;
    flex-direction:column;
@@ -57,7 +59,7 @@ body{
   color:dodgerblue;
   margin-right:10px;
 }
-
+/* End Django*/
 
 
 .section-img{
@@ -450,14 +452,18 @@ outline:none;
 }
 .dd-menu-style{
  background-color:#F2F2F2;
+ position:relative;
 }
 
 .dd-link-style{
   font-size:1.4rem;
   color:green;
+  position:relative;
 }
 .dd-link-style:hover{
   color:red;
+  background:transparent;
+  left:5px;
 }
 
 

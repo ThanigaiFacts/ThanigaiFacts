@@ -40,6 +40,7 @@
 .page-title{
    margin: 2% auto;
 }
+/* Need to add these in Django style page */
 .logo-text-div{
    padding:2%;
    display:flex;
@@ -64,6 +65,7 @@
   color:dodgerblue;
   margin-right:10px;
 }
+/* End  Django style */
 
 .img-logo{
   width: 100%;
