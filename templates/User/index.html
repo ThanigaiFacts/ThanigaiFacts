@@ -114,7 +114,7 @@
   <!-- Contact -->
 
    <section id="contact-section" style='margin-top:3%;padding:1%;' class="bg-success">
-     <div class="container style-container" style="padding:2%;">
+     <div class="container style-container-active" style="padding:2%;">
        <!-- <div id="EducationDiv" class="divSectionStyle" style = 'background-color:#FDEEDC'> -->
      <h3 class="SubHeading">CONTACT</h3>
          <p class="sectionText" style="text-align:center;margin:2% auto;">Mail to <a href = "{{ url_for('contact') }}" class="contact-link"><em>thanigaifacts@gmail.com</em></a></p>
@@ -133,4 +133,20 @@
     </footer>
     </div>
    </section>
+<script>
+    function scrolled(){
+    var sections = document.querySelectorAll(".style-container");
+    for(var i = 0 ; i < sections.length; i++)
+    {
+     distance = sections[i].getBoundingClientRect().top;
+      if (distance < 300 ){
+        sections[i].classList.add("style-container-active");
+      }
+      else{
+       sections[i].classList.remove("style-container-active");
+      }
+     }
+    }
+    window.addEventListener("scroll",scrolled);
+</script>
 {% endblock %}

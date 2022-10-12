@@ -65,6 +65,10 @@
   color:dodgerblue;
   margin-right:10px;
 }
+#nav-section{
+  position:static;
+}
+
 /* End  Django style */
 
 .img-logo{
