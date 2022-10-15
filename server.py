@@ -125,6 +125,15 @@ def ShareMarket():
 
 # -- Share Market Page Ends --#
 
+# -- Admin Blog Area Starts -- #
+@app.route("/admin/blog")
+@admin.login_required
+def adminBlog():
+    return  render_template("Admin/adminBlog.html")
+
+
+#  -- Admin Blog Area Ends -- #
+
 # -- Admin Part Ends -- #
 
 

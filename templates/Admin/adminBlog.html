@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Blog Dashboard{% endblock %}
+
+{% block backbtn %}
+  <a href="{{ url_for('admin_home') }}" class = "homeBtn">Back</a>
+{% endblock %}
+
+{% block content %}
+<section id = "btn-section">
+ <div class="container-fluid">
+  <div class="row">
+     <div class="col adminblog-col-style">
+        <button id = "admin-blog-new-btn" class="adminblog-btn-style" onclick="newBtnClicked()">NEW</button>
+        <button id = "admin-blog-edit-btn" class="adminblog-btn-style" onclick="editBtnClicked()">EDIT</button>
+        <button id = "admin-blog-delete-btn" class="adminblog-btn-style" onclick="deleteBtnClicked()">DELETE</button>
+     </div>
+  </div>
+</div>
+</section>
+
+<section id = "new-blog-section" style="display:none;">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col adminblog-col-style">
+    <form action="#">
+     <div class="contact-body">
+       <h3 class="admin-blog-new-section-label">Category</h3>
+       <input class= "admin-blog-input-style" type="text" name = "blogCategory" placeholder="blog category">
+       <h3 class="admin-blog-new-section-label">Title</h3>
+       <input type="text" name = "blogTitle" placeholder="blog title">
+       <h3 class="admin-blog-new-section-label">Description</h3>
+       <textarea name = "blogBody" placeholder="blog content"></textarea>
+       <input type="submit" class="btn btn-lg btn-success" value = "Save">
+     </div>
+    </form>
+   </div>
+  </div>
+</div>
+</section>
+
+
+<section id = "edit-blog-section"  style="display:none;">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col adminblog-col-style">
+    <form action="#">
+     <div class="contact-body">
+       <h3 class="admin-blog-new-section-label">editCategory</h3>
+       <select id="CompanyList" name="CompanyNames" class="admin-block-dd-style" onchange="companyListChanged()">
+           <option value="Travel">Travel</option>
+           <option value="Sports">Sports</option>
+          <!--{% for company in Companies: %}
+              <option value="{{ company }}">{{ company }}</option>
+           {% endfor %}-->
+       </select>
+       <h3 class="admin-blog-new-section-label">Title</h3>
+       <input type="text" name = "blogTitle" placeholder="blog title">
+       <h3 class="admin-blog-new-section-label">Description</h3>
+       <textarea name = "blogBody" placeholder="blog content"></textarea>
+       <input type="submit" class="btn btn-lg btn-success" value = "Save">
+     </div>
+    </form>
+   </div>
+  </div>
+</div>
+</section>
+
+<script src="{{ url_for('static',filename = 'JS/adminBlog.js') }}"></script>
+{% endblock %}
