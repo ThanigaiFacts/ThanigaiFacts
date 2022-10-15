@@ -283,7 +283,7 @@
   width:32%;
 }
 
-.admin-blog-new-section-label{
+.admin-blog-section-label{
     color:red;
     font-family : cambria math;
     letter-spacing:1px;
@@ -296,14 +296,15 @@
   font-size:2rem;
 }
 .admin-block-dd-style{
- font-size:1.5rem;
+ font-size:1.7rem;
  border:1px solid dodgerblue;
- padding:2% 1%;
+ padding:3% 1%;
  width:100%;
  color:blue;
  font-family : cambria math;
  border-radius : 5px;
  outline:none;
+ margin: 2% auto;
 }
 
 /* Error page */
