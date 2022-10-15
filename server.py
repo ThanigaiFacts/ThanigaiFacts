@@ -129,7 +129,14 @@ def ShareMarket():
 @app.route("/admin/blog")
 @admin.login_required
 def adminBlog():
-    return  render_template("Admin/adminBlog.html")
+    return render_template("Admin/adminBlog.html")
+
+
+@app.route("/admin/processBlog/<str:blogType>")
+@admin.login_required
+def processBlog(blogType):
+    admin.adminBlog(blogType)
+    return redirect(url_for("adminBlog"))
 
 
 #  -- Admin Blog Area Ends -- #

@@ -72,6 +72,7 @@ class Admin:
         wrapper.__name__ = f.__name__
         return wrapper
 
+
     '''
     def login_required(self,f):
        # @wraps(f)
@@ -83,4 +84,12 @@ class Admin:
         wrapper.__name__ = f.__name__
         return wrapper
     '''
+
+    def adminBlog(self,blogType):
+        if blogType == "new":
+            pass
+        elif blogType == "edit":
+            pass
+        else:
+            pass
 

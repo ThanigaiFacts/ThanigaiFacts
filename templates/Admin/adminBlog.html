@@ -22,7 +22,7 @@
  <div class="container-fluid">
   <div class="row">
    <div class="col adminblog-col-style">
-    <form action="#">
+    <form action="{{ url_for('processBlog',btn = 'new') }}">
      <div class="contact-body">
        <h3 class="admin-blog-section-label">Category</h3>
        <input class= "admin-blog-input-style" type="text" name = "blogCategory" placeholder="blog category">
@@ -43,7 +43,7 @@
  <div class="container-fluid">
   <div class="row">
    <div class="col adminblog-col-style">
-    <form action="#">
+    <form action="{{ url_for('processBlog',btn = 'edit') }}">
      <div class="contact-body">
        <h3 class="admin-blog-section-label">Blog Category</h3>
        <select id="editcategoryList" name="CompanyNames" class="admin-block-dd-style" onchange="companyListChanged()">
@@ -75,7 +75,7 @@
  <div class="container-fluid">
   <div class="row">
    <div class="col adminblog-col-style">
-    <form action="#">
+    <form action="{{ url_for('processBlog',btn = 'delete') }}">
      <div class="contact-body">
        <h3 class="admin-blog-section-label">Blog Category</h3>
        <select id="deletecategoryList" name="CompanyNames" class="admin-block-dd-style" onchange="companyListChanged()">
